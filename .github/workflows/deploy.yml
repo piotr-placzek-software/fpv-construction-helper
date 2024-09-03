@@ -1,0 +1,38 @@
+name: Deploy Angular App to GitHub Pages
+
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '20'
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build Angular app
+              run: npm run build -- --configuration production
+
+            - name: Move files from 'browser' to root
+              run: |
+                mv ./dist/fpv-construction-helper/browser/* ./dist/fpv-construction-helper/
+                rmdir ./dist/fpv-construction-helper/browser
+
+            - name: Deploy to GitHub Pages
+              uses: peaceiris/actions-gh-pages@v4
+              with:
+                  github_token: ${{ secrets.PAT_TOKEN }}
+                  publish_dir: ./dist/fpv-construction-helper
+                  cname: ''
+                  publish_branch: gh-pages
