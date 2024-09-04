@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/purple-green.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+app-root {
+    display: block;
+    height: 100vh;
+}
+
+mat-drawer-container {
+    mat-drawer,
+    mat-drawer-content {
+        padding: 0.5rem;
+    }
+}
