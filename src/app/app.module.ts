@@ -7,11 +7,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppLayoutComponent } from './components/layout/app-layout.component';
+import { AppSideNavComponent } from './components/layout/side-nav/app-side-nav.component';
+import { AppToolbarComponent } from './components/layout/toolbar/app-toolbar.component';
+import { AppHomePageComponent } from './components/home-page/app-home-page.component';
 
 const MatModules = [MatToolbarModule, MatSidenavModule, MatCheckboxModule];
-
+const AppLayoutComponents = [AppLayoutComponent, AppToolbarComponent, AppSideNavComponent];
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, ...AppLayoutComponents, AppHomePageComponent],
     imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, FormsModule, ...MatModules],
     bootstrap: [AppComponent],
 })
