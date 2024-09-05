@@ -8,13 +8,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppConfigurationModule } from './core-modules/configuration/app-configuration.module';
+import { AppNavigationItem } from './core-modules/navigation/app-navigation.item';
 import { AppNavigationModule } from './core-modules/navigation/app-navigation.module';
+import { AppNavigationService } from './core-modules/navigation/app-navigation.service';
+import { AppCalculatorModule } from './features-modules/calculator/app-calculator.module';
 import { AppLayoutComponent } from './layout/app-layout.component';
 import { AppSideNavComponent } from './layout/side-nav/app-side-nav.component';
 import { AppToolbarComponent } from './layout/toolbar/app-toolbar.component';
 import { AppHomePageComponent } from './pages/home-page/app-home-page.component';
 
 const AppCoreModules = [AppConfigurationModule, AppNavigationModule];
+const AppFeatureModules = [AppCalculatorModule];
 const MatModules = [MatToolbarModule, MatSidenavModule, MatCheckboxModule];
 const AppLayoutComponents = [AppLayoutComponent, AppToolbarComponent, AppSideNavComponent];
 @NgModule({
@@ -22,11 +26,21 @@ const AppLayoutComponents = [AppLayoutComponent, AppToolbarComponent, AppSideNav
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot([]),
+        RouterModule.forRoot([{ path: '', redirectTo: 'home', pathMatch: 'full' }]),
         FormsModule,
         ...MatModules,
         ...AppCoreModules,
+        ...AppFeatureModules,
     ],
     bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+    constructor(appNavigationService: AppNavigationService) {
+        appNavigationService.registerNavigationItems([
+            new AppNavigationItem(0, 'Home Page', 'home', {
+                path: 'home',
+                component: AppHomePageComponent,
+            }),
+        ]);
+    }
+}
