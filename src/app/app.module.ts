@@ -5,18 +5,28 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { AppLayoutComponent } from './components/layout/app-layout.component';
-import { AppSideNavComponent } from './components/layout/side-nav/app-side-nav.component';
-import { AppToolbarComponent } from './components/layout/toolbar/app-toolbar.component';
-import { AppHomePageComponent } from './components/home-page/app-home-page.component';
+import { AppConfigurationModule } from './core-modules/configuration/app-configuration.module';
+import { AppNavigationModule } from './core-modules/navigation/app-navigation.module';
+import { AppLayoutComponent } from './layout/app-layout.component';
+import { AppSideNavComponent } from './layout/side-nav/app-side-nav.component';
+import { AppToolbarComponent } from './layout/toolbar/app-toolbar.component';
+import { AppHomePageComponent } from './pages/home-page/app-home-page.component';
 
+const AppCoreModules = [AppConfigurationModule, AppNavigationModule];
 const MatModules = [MatToolbarModule, MatSidenavModule, MatCheckboxModule];
 const AppLayoutComponents = [AppLayoutComponent, AppToolbarComponent, AppSideNavComponent];
 @NgModule({
     declarations: [AppComponent, ...AppLayoutComponents, AppHomePageComponent],
-    imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, FormsModule, ...MatModules],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        RouterModule.forRoot([]),
+        FormsModule,
+        ...MatModules,
+        ...AppCoreModules,
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
