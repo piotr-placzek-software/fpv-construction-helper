@@ -1,0 +1,17 @@
+<mat-card>
+    <mat-card-header>Acceleration</mat-card-header>
+    <mat-card-content>
+        <div class="flex gap-2 items-center mt-4" [formGroup]="form">
+            <app-calculator-form-number-input
+                label="Thrust [gf]"
+                formControlName="thrust"></app-calculator-form-number-input>
+            <app-calculator-form-number-input
+                label="Weight [g]"
+                formControlName="weight"></app-calculator-form-number-input>
+            <app-calculator-form-number-input
+                label="Motors amount"
+                formControlName="multiplier"></app-calculator-form-number-input>
+            <h1>a = {{ a }} [m/s<sup>2</sup>]</h1>
+        </div>
+    </mat-card-content>
+</mat-card>

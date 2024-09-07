@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-header>Propeller tip speed</mat-card-header>
+    <mat-card-content>
+        <div class="flex gap-2 items-center mt-4" [formGroup]="form">
+            <app-calculator-form-battery-size-select
+                formControlName="batterySize"></app-calculator-form-battery-size-select>
+            <app-calculator-form-propeller-size-select
+                formControlName="propellerSize"></app-calculator-form-propeller-size-select>
+            <app-calculator-form-number-input label="Motor KV" formControlName="kv"></app-calculator-form-number-input>
+            <app-calculator-form-percentage-select label="Env loses" formControlName="loses"></app-calculator-form-percentage-select>
+            <h1>SFM = {{ sfm }} [m/s]</h1>
+        </div>
+    </mat-card-content>
+</mat-card>
