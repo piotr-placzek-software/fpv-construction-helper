@@ -14,8 +14,8 @@ import { AppCalculatorService } from './app-calculator.service';
 import { AppAccelerationCalculatorComponent } from './calculators/acceleration-calculator/app-acceleration-calculator.component';
 import { AppKvCalculatorComponent } from './calculators/kv-calculator/app-kv-calculator.component';
 import { AppRpmCalculatorComponent } from './calculators/rpm-calculator/app-rpm-calculator.component';
-import { AppSfmCalculatorComponent } from './calculators/sfm-calculator/app-sfm-calculator.component';
-import { AppSfmConverterCalculatorComponent } from './calculators/sfm-converter/app-sfm-converter-calculator.component';
+import { AppPtsCalculatorComponent } from './calculators/pts-calculator/app-pts-calculator.component';
+import { AppPtsConverterCalculatorComponent } from './calculators/pts-converter/app-pts-converter-calculator.component';
 import { AppCalculatorFormBatterySizeSelect } from './form-components/battery-size-select/app-calculator-form-battery-size-select.component';
 import { AppCalculatorFormNumberInput } from './form-components/number-input/app-calculator-form-number-input.component';
 import { AppCalculatorFormPercentageSelect } from './form-components/percentage-select/app-calculator-form-percentage-select.component';
@@ -25,8 +25,8 @@ const AppCalculatorComponents = [
     AppKvCalculatorComponent,
     AppRpmCalculatorComponent,
     AppAccelerationCalculatorComponent,
-    AppSfmCalculatorComponent,
-    AppSfmConverterCalculatorComponent,
+    AppPtsCalculatorComponent,
+    AppPtsConverterCalculatorComponent,
 ];
 const AppCalculatorFormComponents = [
     AppCalculatorFormBatterySizeSelect,

@@ -12,8 +12,8 @@ export class AppConfigurationService {
                 kvmax: true,
                 rpm: true,
                 acceleration: true,
-                sfm: true,
-                sfm_c: false,
+                pts: true,
+                pts_c: true,
             },
         },
     };
