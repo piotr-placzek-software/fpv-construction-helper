@@ -1,0 +1,9 @@
+<div class="text-white p-4">
+    <div class="flex justify-between">
+        <h2>{{ data.title }}</h2>
+        <mat-icon fontIcon="close" (click)="close()" class="hover:cursor-pointer"></mat-icon>
+    </div>
+    <div class="max-h-96 overflow-y-auto py-4">
+        <ng-container *ngTemplateOutlet="data.contentTemplateRef"></ng-container>
+    </div>
+</div>

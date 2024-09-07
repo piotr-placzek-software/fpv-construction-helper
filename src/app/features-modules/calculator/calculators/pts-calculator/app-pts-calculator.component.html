@@ -1,5 +1,8 @@
 <mat-card>
-    <mat-card-header>Propeller tip speed</mat-card-header>
+    <mat-card-header class="flex justify-between">
+        <mat-card-title>Propeller tip speed</mat-card-title>
+        <mat-icon fontIcon="question_mark" (click)="openExplanationDialog()" class="hover:cursor-pointer"></mat-icon>
+    </mat-card-header>
     <mat-card-content>
         <div class="flex gap-10 items-center mt-4" [formGroup]="form">
             <div class="flex flex-col">
@@ -22,3 +25,24 @@
         </div>
     </mat-card-content>
 </mat-card>
+
+<ng-template #explanationContent>
+    <p>
+        Propeller tip speed is the speed at which the outermost point (the tip) of a propeller blade travels through the
+        air as the propeller rotates. This speed depends on the rotational speed (RPM) of the propeller and the length
+        of the propeller blade.
+    </p>
+    <p>
+        Optimal propeller tip speed for a drone depends on balancing efficiency, noise, and structural integrity. It's a
+        key design factor that varies with drone size, application, and environmental considerations.
+    </p>
+    <p>
+        Practical Considerations:<br />
+        Small Drones: For small drones, a lower tip speed can be preferable, around 100-150 m/s, to minimize noise and
+        maximize battery life.<br />
+        Larger Drones or Racing Drones: For larger drones or performance-focused drones (like racing drones), higher tip
+        speeds may be acceptable (up to 200 m/s or more), trading off some efficiency and noise for increased thrust and
+        agility.
+    </p>
+    <p class="text-center">Tip Speed = Propeller Radius * 2π * RPM / 60</p>
+</ng-template>

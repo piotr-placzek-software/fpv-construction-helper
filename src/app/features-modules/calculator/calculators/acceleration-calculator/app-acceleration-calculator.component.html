@@ -1,5 +1,8 @@
 <mat-card>
-    <mat-card-header>Acceleration</mat-card-header>
+    <mat-card-header class="flex justify-between">
+        <mat-card-title>Acceleration</mat-card-title>
+        <mat-icon fontIcon="question_mark" (click)="openExplanationDialog()" class="hover:cursor-pointer"></mat-icon>
+    </mat-card-header>
     <mat-card-content>
         <div class="flex gap-10 items-center mt-4" [formGroup]="form">
             <div class="flex gap-2 items-center">
@@ -17,3 +20,15 @@
         </div>
     </mat-card-content>
 </mat-card>
+
+<ng-template #explanationContent>
+    <p>
+        Drone acceleration refers to how quickly a drone can change its speed. It measures how fast the drone can go
+        from a lower speed to a higher speed or vice versa.
+    </p>
+    <p>
+        This calculation is pretty simple. You must find motor thrust in manufacturer's specification (in grams) and
+        provide RTF weight of your drone (also in grams)
+    </p>
+    <p class="text-center">Acceleration = ((Thrust / 1000) * GRAVITY_CONST * Amount Of Motors) / (Weight / 1000)</p>
+</ng-template>
