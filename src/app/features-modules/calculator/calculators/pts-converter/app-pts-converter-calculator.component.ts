@@ -8,7 +8,7 @@ import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-
     templateUrl: './app-pts-converter-calculator.component.html',
 })
 export class AppPtsConverterCalculatorComponent {
-    public pts = 0;
+    public kv = 0;
 
     public form = new FormGroup({
         batterySize: new FormControl(),
@@ -26,11 +26,11 @@ export class AppPtsConverterCalculatorComponent {
 
     private recalculatePts() {
         if (fromControlsValuesIncludesNull(this.form)) {
-            this.pts = 0;
+            this.kv = 0;
         } else {
             console.log('calculation');
 
-            this.pts = this.appCalculatorService.convertPtsToSecondaryKv(
+            this.kv = this.appCalculatorService.convertPtsToSecondaryKv(
                 this.form.controls.batterySize.value,
                 this.form.controls.primaryPropellerSize.value,
                 this.form.controls.secondaryPropellerSize.value,
