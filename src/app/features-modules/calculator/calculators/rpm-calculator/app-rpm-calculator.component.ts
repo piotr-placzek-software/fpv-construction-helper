@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AppTextDialogService } from '../../../../shared/text-dialog/app-text-dialog.service';
 import { AppCalculatorService } from '../../app-calculator.service';
 import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-calculator.utils';
 
@@ -8,6 +9,7 @@ import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-
     templateUrl: './app-rpm-calculator.component.html',
 })
 export class AppRpmCalculatorComponent {
+    @ViewChild('explanationContent') explanationContentTemplateRef!: TemplateRef<unknown>;
     public rpm = 0;
 
     public form = new FormGroup({
@@ -16,10 +18,20 @@ export class AppRpmCalculatorComponent {
         loses: new FormControl(),
     });
 
-    constructor(private readonly appCalculatorService: AppCalculatorService) {}
+    constructor(
+        private readonly appCalculatorService: AppCalculatorService,
+        private readonly appTextDialogService: AppTextDialogService,
+    ) {}
 
     ngOnInit(): void {
         subscribeFormChanges(this.form, () => this.recalculateRpm());
+    }
+
+    public openExplanationDialog(): void {
+        this.appTextDialogService.open({
+            title: 'Rotations per minute',
+            contentTemplateRef: this.explanationContentTemplateRef,
+        });
     }
 
     private recalculateRpm(): void {

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AppTextDialogService } from '../../../../shared/text-dialog/app-text-dialog.service';
 import { AppCalculatorService } from '../../app-calculator.service';
 import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-calculator.utils';
 
@@ -8,6 +9,7 @@ import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-
     templateUrl: './app-pts-converter-calculator.component.html',
 })
 export class AppPtsConverterCalculatorComponent {
+    @ViewChild('explanationContent') explanationContentTemplateRef!: TemplateRef<unknown>;
     public kv = 0;
 
     public form = new FormGroup({
@@ -18,10 +20,20 @@ export class AppPtsConverterCalculatorComponent {
         loses: new FormControl(),
     });
 
-    constructor(private readonly appCalculatorService: AppCalculatorService) {}
+    constructor(
+        private readonly appCalculatorService: AppCalculatorService,
+        private readonly appTextDialogService: AppTextDialogService,
+    ) {}
 
     ngOnInit(): void {
         subscribeFormChanges(this.form, () => this.recalculatePts());
+    }
+
+    public openExplanationDialog(): void {
+        this.appTextDialogService.open({
+            title: 'Propeller tip speed conversion',
+            contentTemplateRef: this.explanationContentTemplateRef,
+        });
     }
 
     private recalculatePts() {

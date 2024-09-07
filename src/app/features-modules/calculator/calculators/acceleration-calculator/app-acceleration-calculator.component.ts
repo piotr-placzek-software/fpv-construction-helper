@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AppTextDialogService } from '../../../../shared/text-dialog/app-text-dialog.service';
 import { AppCalculatorService } from '../../app-calculator.service';
 import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-calculator.utils';
 
@@ -8,6 +9,7 @@ import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-
     templateUrl: './app-acceleration-calculator.component.html',
 })
 export class AppAccelerationCalculatorComponent implements OnInit {
+    @ViewChild('explanationContent') explanationContentTemplateRef!: TemplateRef<unknown>;
     public a = 0;
 
     public form = new FormGroup({
@@ -16,10 +18,20 @@ export class AppAccelerationCalculatorComponent implements OnInit {
         multiplier: new FormControl(),
     });
 
-    constructor(private readonly appCalculatorService: AppCalculatorService) {}
+    constructor(
+        private readonly appCalculatorService: AppCalculatorService,
+        private readonly appTextDialogService: AppTextDialogService,
+    ) {}
 
     ngOnInit(): void {
         subscribeFormChanges(this.form, () => this.recalculateA());
+    }
+
+    public openExplanationDialog(): void {
+        this.appTextDialogService.open({
+            title: 'Acceleration',
+            contentTemplateRef: this.explanationContentTemplateRef,
+        });
     }
 
     private recalculateA(): void {

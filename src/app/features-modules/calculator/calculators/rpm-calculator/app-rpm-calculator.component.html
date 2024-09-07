@@ -1,5 +1,8 @@
 <mat-card>
-    <mat-card-header>RPM</mat-card-header>
+    <mat-card-header class="flex justify-between">
+        <mat-card-title>RPM</mat-card-title>
+        <mat-icon fontIcon="question_mark" (click)="openExplanationDialog()" class="hover:cursor-pointer"></mat-icon>
+    </mat-card-header>
     <mat-card-content>
         <div class="flex gap-10 items-center mt-4" [formGroup]="form">
             <div class="flex gap-2 items-center">
@@ -16,3 +19,11 @@
         </div>
     </mat-card-content>
 </mat-card>
+
+<ng-template #explanationContent>
+    <p>
+        It's tell you how fast your motor would spin. If you select <i>Env losses</i> equal to 0% then calculated RPM
+        value will be the maximum motor speed without propellers and assuming their 100% efficiency.
+    </p>
+    <p class="text-center">RPM = V<sub>bat</sub> * KV</p>
+</ng-template>

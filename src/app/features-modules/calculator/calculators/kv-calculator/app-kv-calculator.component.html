@@ -1,5 +1,8 @@
 <mat-card>
-    <mat-card-header>Optimal KV rating</mat-card-header>
+    <mat-card-header class="flex justify-between">
+        <mat-card-title>Optimal KV rating</mat-card-title>
+        <mat-icon fontIcon="question_mark" (click)="openExplanationDialog()" class="hover:cursor-pointer"></mat-icon>
+    </mat-card-header>
     <mat-card-content>
         <div class="flex gap-10 items-center mt-4" [formGroup]="form">
             <div class="flex gap-2 items-center">
@@ -12,3 +15,33 @@
         </div>
     </mat-card-content>
 </mat-card>
+
+<ng-template #explanationContent>
+    <p>
+        The KV parameter of a motor refers to the motor\'s “velocity constant” which indicates how many revolutions per
+        minute (RPM) the motor will make per volt applied.
+    </p>
+    <p>
+        Propellers become less efficient and start to produce less thrust when the tip of the propeller approaches the
+        speed of sound due to supersonic airflow and shock waves. The maximum thrust is usually generated when the
+        propeller tip speed is about 0.9 times the speed of sound, or about 1,000 feet per second.
+    </p>
+    <p>
+        So, to get the tip of the propeller to max out at 1,000 feet per second, we need to know the diameter of the
+        prop to get the optimal RPM. RPM is measured in minutes (that\'s the "M"), so to go from seconds to minutes,
+        multiply 1,000 by 60 to get 60,000 feet per minute. Now we want it in inches and not feet, so multiply by 12 to
+        get 720,000 inches per minute as the tip speed. The tip moves around in a circle, so we divide by the prop
+        diameter multiplied by pi, which is the (P x 𝝅) part of the equation.
+    </p>
+    <p class="text-right">
+        <a
+            href="https://www.reddit.com/r/fpv/comments/1bki4hc/how_to_choose_motor_kv_to_optimize_thrust/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button"
+            target="_blank"
+            class="text-blue-600 dark:text-blue-500 hover:underline"
+            >Read more</a
+        >
+    </p>
+    <p class="text-center">
+        KV<sub>opt</sub> = 720000 / (Propeller Diameter * π * V<sub>bat</sub>)
+    </p>
+</ng-template>
