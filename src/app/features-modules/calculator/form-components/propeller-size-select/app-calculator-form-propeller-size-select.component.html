@@ -1,5 +1,5 @@
 <mat-form-field>
-    <mat-label>Propeller size</mat-label>
+    <mat-label>{{ label }}</mat-label>
     <mat-select [value]="value" (selectionChange)="updateValue($event)" (blur)="onTouched()">
         <mat-option *ngFor="let option of propellerSizeSelectorOptions" [value]="option.value">{{
             option.label
