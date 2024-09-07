@@ -1,16 +1,16 @@
 <mat-card>
     <mat-card-header>Optimal KV rating</mat-card-header>
     <mat-card-content>
-      <div class="flex gap-2 items-center mt-4">
+      <div class="flex gap-2 items-center mt-4" [formGroup]="form">
         <mat-form-field>
             <mat-label>Battery size</mat-label>
-            <mat-select (selectionChange)="batterySizeSelectionChanged($event)">
+            <mat-select formControlName="batterySize">
               <mat-option *ngFor="let option of batterySizeSelectorOptions" [value]="option.value">{{option.label}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Propeller size</mat-label>
-            <mat-select (selectionChange)="propellerSizeSelectionChanged($event)">
+            <mat-select formControlName="propellerSize">
               <mat-option *ngFor="let option of propellerSizeSelectorOptions" [value]="option.value">{{option.label}}</mat-option>
             </mat-select>
           </mat-form-field>

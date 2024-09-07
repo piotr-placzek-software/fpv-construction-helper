@@ -6,11 +6,11 @@ import { AppCalculatorService } from '../app-calculator.service';
 import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../app-calculator.utils';
 
 @Component({
-    selector: 'app-kv-calculator',
-    templateUrl: './app-kv-calculator.component.html',
+    selector: 'app-sfm-calculator',
+    templateUrl: './app-sfm-calculator.component.html',
 })
-export class AppKvCalculatorComponent implements OnInit {
-    public kv = 0;
+export class AppSfmCalculatorComponent implements OnInit {
+    public sfm = 0;
 
     public readonly batterySizeSelectorOptions: FormSelectOption<BatteryVmax>[] = Object.entries(BATTERY_VMAX).map(
         ([label, value]) => ({
@@ -26,24 +26,37 @@ export class AppKvCalculatorComponent implements OnInit {
         value,
     }));
 
+    public readonly envLosesSelectorOptions: FormSelectOption<number>[] = Array(17)
+        .fill(0)
+        .map((v, i) => ({
+            label: `${i * 5}%`,
+            value: i * 0.05,
+        }));
+
     public form = new FormGroup({
         batterySize: new FormControl(),
         propellerSize: new FormControl(),
+        kv: new FormControl(),
+        loses: new FormControl(),
     });
 
     constructor(private readonly appCalculatorService: AppCalculatorService) {}
 
     ngOnInit(): void {
-        subscribeFormChanges(this.form, () => this.recalculateKv());
+        subscribeFormChanges(this.form, () => this.recalculateSfm());
     }
 
-    private recalculateKv(): void {
+    private recalculateSfm() {
         if (fromControlsValuesIncludesNull(this.form)) {
-            this.kv = 0;
+            this.sfm = 0;
         } else {
-            this.kv = this.appCalculatorService.calculateKv(
+            console.log('calculation');
+
+            this.sfm = this.appCalculatorService.calculatePropellerTipSpeed(
                 this.form.controls.batterySize.value,
                 this.form.controls.propellerSize.value,
+                +this.form.controls.kv.value,
+                this.form.controls.loses.value,
             );
         }
     }
