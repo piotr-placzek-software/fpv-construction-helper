@@ -1,3 +1,9 @@
-<div class="p-2">
-<app-kvmax-calculator *ngIf="featureFlags.kvmax"></app-kvmax-calculator>
+<div class="p-2 flex flex-col gap-2">
+<app-kv-calculator *ngIf="featureFlags.kvmax"></app-kv-calculator>
+<app-rpm-calculator *ngIf="featureFlags.rpm"></app-rpm-calculator>
+
+<app-acceleration-calculator *ngIf="featureFlags.acceleration"></app-acceleration-calculator>
+<app-sfm-calculator *ngIf="featureFlags.sfm"></app-sfm-calculator>
+<app-sfm-converter-calculator *ngIf="featureFlags.sfm_c"></app-sfm-converter-calculator>
+
 </div>

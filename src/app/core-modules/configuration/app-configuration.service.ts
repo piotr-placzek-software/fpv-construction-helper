@@ -10,6 +10,10 @@ export class AppConfigurationService {
             enabled: true,
             components: {
                 kvmax: true,
+                rpm: true,
+                acceleration: true,
+                sfm: true,
+                sfm_c: false,
             },
         },
     };
