@@ -14,6 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class AppCalculatorFormNumberInput implements ControlValueAccessor {
     @Input() label?: string;
+    @Input() step = 50;
 
     public value: number | null = null;
 

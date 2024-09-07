@@ -1,4 +1,4 @@
 <mat-form-field>
     <mat-label>{{ label }}</mat-label>
-    <input matInput type="number" [value]="value" (input)="updateValue($event)"  (blur)="onTouched()" />
+    <input matInput type="number" [step]="step" [value]="value" (input)="updateValue($event)"  (blur)="onTouched()" />
 </mat-form-field>

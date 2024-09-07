@@ -1,5 +1,42 @@
 <div class="p-4 text-center">
-    <h1>{{appTitle}}</h1>
-    <p>{{appDescription}}</p>
-    <a [href]="appRepositoryUrl" target="_blank">{{appRepositoryUrl}}</a>
+    <section>
+        <h1>{{ appTitle }}</h1>
+        <p>{{ appDescription }}</p>
+    </section>
+    <section class="mt-8">
+        <p>
+            Special thanks to
+            <a
+                class="text-blue-600 dark:text-blue-500 hover:underline"
+                href="https://www.reddit.com/user/TallGuyMichael/"
+                target="_blank"
+                >TallGuyMichael</a
+            >
+            and
+            <a
+                class="text-blue-600 dark:text-blue-500 hover:underline"
+                href="https://www.reddit.com/user/PrecisionTreeFood/"
+                target="_blank"
+                >PrecisionTreeFood</a
+            >
+            for extending my knowledge about calculations.<br />
+            I really appreciate it!
+        </p>
+        <p>Also I want to thank 
+            <a
+                class="text-blue-600 dark:text-blue-500 hover:underline"
+                href="https://www.reddit.com/user/slikef/"
+                target="_blank"
+                >slikef</a
+            >
+            for telling me that it would be nice to keep that knowledge in single place, just like an online app.
+        </p>
+    </section>
+    <section class="mt-8">
+        <p>This app is still under development so stay tuned.
+        </p>
+        <p><a class="text-blue-600 dark:text-blue-500 hover:underline" [href]="appRepositoryUrl" target="_blank">{{
+            appRepositoryUrl
+        }}</a></p>
+    </section>
 </div>
