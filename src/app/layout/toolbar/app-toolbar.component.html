@@ -1,3 +1,4 @@
-<mat-toolbar class="bg-orange-500">
+<mat-toolbar class="flex gap-4">
+    <mat-icon [fontIcon]="menuIcon" (click)="menuIconToggle()"></mat-icon>
     <h1>{{ appTitle }}</h1>
 </mat-toolbar>

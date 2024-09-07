@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,7 +17,7 @@ import { AppToolbarComponent } from './layout/toolbar/app-toolbar.component';
 import { AppHomePageComponent } from './pages/home-page/app-home-page.component';
 
 const AppFeatureModules = [AppCalculatorModule];
-const MatModules = [MatToolbarModule, MatSidenavModule, MatCheckboxModule];
+const MatModules = [MatToolbarModule, MatSidenavModule, MatCheckboxModule, MatIconModule];
 const AppLayoutComponents = [AppLayoutComponent, AppToolbarComponent, AppSideNavComponent];
 @NgModule({
     declarations: [AppComponent, ...AppLayoutComponents, AppHomePageComponent],
