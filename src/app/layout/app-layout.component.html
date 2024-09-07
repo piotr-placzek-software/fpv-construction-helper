@@ -1,10 +1,10 @@
+<app-toolbar class="sticky top-0 z-50" (menuIconToggled)="toolbarMenuIconToggled($event)"></app-toolbar>
 <div class="flex flex-col min-h-screen">
-    <app-toolbar></app-toolbar>
     <mat-drawer-container class="flex-1">
-        <mat-drawer mode="side" opened>
+        <mat-drawer mode="side" [opened]="shouldBeVisible">
             <app-side-nav></app-side-nav>
         </mat-drawer>
-        <mat-drawer-content>
+        <mat-drawer-content class="overflow-hidden overflow-y-auto">
             <router-outlet></router-outlet>
         </mat-drawer-content>
     </mat-drawer-container>
