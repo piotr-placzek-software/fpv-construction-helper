@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AppCalculatorService } from '../app-calculator.service';
-import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../app-calculator.utils';
+import { AppCalculatorService } from '../../app-calculator.service';
+import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-calculator.utils';
 
 @Component({
     selector: 'app-acceleration-calculator',

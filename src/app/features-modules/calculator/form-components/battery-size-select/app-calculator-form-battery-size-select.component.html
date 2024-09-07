@@ -1,0 +1,8 @@
+<mat-form-field>
+    <mat-label>Battery size</mat-label>
+    <mat-select [value]="value" (selectionChange)="updateValue($event)" (blur)="onTouched()" >
+        <mat-option *ngFor="let option of batterySizeSelectorOptions" [value]="option.value">{{
+            option.label
+        }}</mat-option>
+    </mat-select>
+</mat-form-field>
