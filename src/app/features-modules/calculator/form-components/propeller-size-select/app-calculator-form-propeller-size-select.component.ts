@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
 import { FormSelectOption } from '../../../../shared/types/forms-specific.types';
@@ -16,6 +16,8 @@ import { PROPELLER_SIZE, PropellerSize } from '../../../../shared/types/fpv-spec
     ],
 })
 export class AppCalculatorFormPropellerSizeSelect implements ControlValueAccessor {
+    @Input() label = 'Propeller size';
+
     public value: PropellerSize = PROPELLER_SIZE['1_INCH'];
 
     public readonly propellerSizeSelectorOptions: FormSelectOption<PropellerSize>[] = Object.entries(

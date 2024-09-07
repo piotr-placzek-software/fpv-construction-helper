@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-header>Propeller tip speed conversion</mat-card-header>
+  <mat-card-content>
+      <div class="flex gap-2 items-center mt-4" [formGroup]="form">
+          <app-calculator-form-battery-size-select
+              formControlName="batterySize"></app-calculator-form-battery-size-select>
+          <app-calculator-form-propeller-size-select
+          label="Primary prop size"
+              formControlName="primaryPropellerSize"></app-calculator-form-propeller-size-select>
+          <app-calculator-form-number-input label="Primary motor KV" formControlName="primaryKv"></app-calculator-form-number-input>
+          <app-calculator-form-propeller-size-select
+          label="Secondary prop size"
+              formControlName="secondaryPropellerSize"></app-calculator-form-propeller-size-select>
+          <app-calculator-form-percentage-select label="Env loses" formControlName="loses"></app-calculator-form-percentage-select>
+          <h1>KV = {{ pts }}</h1>
+      </div>
+  </mat-card-content>
+</mat-card>
