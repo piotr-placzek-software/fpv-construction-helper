@@ -4,16 +4,20 @@ const GRAVITY = 9.80665;
 const KG = 1000;
 const FEET = 0.3048;
 const MINUTE = 60;
+const MACH09 = 1012.5;
+const MACH0889 = 1000;
+const MACH07 = 787.5;
 
 @Injectable()
 export class AppCalculatorService {
     public calculateAcceleration(motorThrust: number, weightInGrams: number, multiplier = 4) {
-        const result = ((motorThrust / 1000) * GRAVITY * multiplier) / (weightInGrams / KG);
+        const result = ((motorThrust / KG) * GRAVITY * multiplier) / (weightInGrams / KG);
         return this.round(result);
     }
 
     public calculateKv(batterySize: number, propellerSize: number): number {
-        const result = 720000 / (propellerSize * Math.PI * batterySize);
+        const X = MACH0889 * 60 * 12;
+        const result = X / (propellerSize * Math.PI * batterySize);
         return this.round(result, 0);
     }
 
