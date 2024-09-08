@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AppConfigurationService } from '../../core-modules/configuration/app-configuration.service';
 
 @Component({
-    selector: 'app-home-page',
     templateUrl: './app-home-page.component.html',
 })
 export class AppHomePageComponent {

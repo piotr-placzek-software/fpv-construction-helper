@@ -1,7 +1,14 @@
 <ul>
     <li *ngFor="let item of items$ | async">
-        <a [routerLink]="item.route.path" routerLinkActive="bg-orange-700" class="flex content-center gap-2 p-2 hover:bg-slate-600">
-            <mat-icon [fontIcon]="item.icon" ></mat-icon>
+        <a
+            [routerLink]="item.route.path"
+            routerLinkActive="bg-orange-700"
+            class="flex content-center gap-2 p-2"
+            [ngClass]="{
+                'hover:bg-slate-600': !item.disabled,
+                'text-gray-500 cursor-default': item.disabled
+            }">
+            <mat-icon [fontIcon]="item.icon"></mat-icon>
             <span class="text-xl">{{ item.displayText }}</span>
         </a>
     </li>
