@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,10 +19,10 @@ import { AppHomePageComponent } from './pages/home-page/app-home-page.component'
 import { AppUnderConstructionPageComponent } from './pages/under-construction/app-under-construction-page.component';
 
 const AppFeatureModules = [AppCalculatorModule];
-const MatModules = [MatToolbarModule, MatSidenavModule, MatCheckboxModule, MatIconModule];
+const MatModules = [MatToolbarModule, MatSidenavModule, MatCheckboxModule, MatIconModule, MatProgressBarModule];
 const AppLayoutComponents = [AppLayoutComponent, AppToolbarComponent, AppSideNavComponent];
 @NgModule({
-    declarations: [AppComponent, ...AppLayoutComponents, AppHomePageComponent],
+    declarations: [AppComponent, ...AppLayoutComponents, AppHomePageComponent, AppUnderConstructionPageComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
