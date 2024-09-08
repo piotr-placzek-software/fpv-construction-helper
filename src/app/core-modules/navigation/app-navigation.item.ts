@@ -6,6 +6,7 @@ export class AppNavigationItem {
         private readonly _displayText: string,
         private readonly _icon: string,
         private readonly _route: Route,
+        private readonly _disabled = false,
     ) {}
 
     get pos(): number {
@@ -24,13 +25,7 @@ export class AppNavigationItem {
         return this._route;
     }
 
-    equals(other: AppNavigationItem): boolean {
-        return (
-            other instanceof AppNavigationItem &&
-            this._pos === other.pos &&
-            this._displayText === other.displayText &&
-            this._icon === other.icon &&
-            this._route === other.route
-        );
+    get disabled(): boolean {
+        return this._disabled;
     }
 }
