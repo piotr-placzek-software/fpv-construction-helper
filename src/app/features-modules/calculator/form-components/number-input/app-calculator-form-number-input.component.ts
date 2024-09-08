@@ -37,9 +37,17 @@ export class AppCalculatorFormNumberInput implements ControlValueAccessor {
     }
 
     updateValue(event: Event): void {
-        const value = (event.target as HTMLInputElement).value || 0;
-        this.writeValue(+value);
-        this.onChange(+value);
+        const target = event.target as HTMLInputElement;
+        const value = target.value;
+        const numericValue = value.replace(/[^0-9.]/g, '');
+        this.writeValue(+numericValue);
+        this.onChange(+numericValue);
         this.onTouched();
+    }
+
+    preventNonNumeric(event: KeyboardEvent): void {
+        if (!/^[0-9.]$/.test(event.key) && event.key.length === 1) {
+            event.preventDefault();
+        }
     }
 }
