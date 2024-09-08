@@ -1,8 +1,11 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AppTextDialogService } from '../../../../shared/text-dialog/app-text-dialog.service';
+import { MACH_PART_VALUE } from '../../../../shared/types/fpv-specific.types';
 import { AppCalculatorService } from '../../app-calculator.service';
 import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-calculator.utils';
+
+const DEFAULT_MACH = MACH_PART_VALUE['Mach 0.889*'];
 
 @Component({
     selector: 'app-kv-calculator',
@@ -13,6 +16,7 @@ export class AppKvCalculatorComponent implements OnInit {
     public kv = 0;
 
     public form = new FormGroup({
+        mach: new FormControl(DEFAULT_MACH),
         batterySize: new FormControl(),
         propellerSize: new FormControl(),
     });
@@ -35,6 +39,7 @@ export class AppKvCalculatorComponent implements OnInit {
             this.kv = 0;
         } else {
             this.kv = this.appCalculatorService.calculateKv(
+                this.form.controls.mach.value || DEFAULT_MACH,
                 this.form.controls.batterySize.value,
                 this.form.controls.propellerSize.value,
             );

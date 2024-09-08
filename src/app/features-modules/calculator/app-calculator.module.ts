@@ -19,6 +19,7 @@ import { AppPtsCalculatorComponent } from './calculators/pts-calculator/app-pts-
 import { AppPtsConverterCalculatorComponent } from './calculators/pts-converter/app-pts-converter-calculator.component';
 import { AppRpmCalculatorComponent } from './calculators/rpm-calculator/app-rpm-calculator.component';
 import { AppCalculatorFormBatterySizeSelect } from './form-components/battery-size-select/app-calculator-form-battery-size-select.component';
+import { AppCalculatorFormMachSelect } from './form-components/mach-select/app-calculator-form-mach-select.component';
 import { AppCalculatorFormNumberInput } from './form-components/number-input/app-calculator-form-number-input.component';
 import { AppCalculatorFormPercentageSelect } from './form-components/percentage-select/app-calculator-form-percentage-select.component';
 import { AppCalculatorFormPropellerSizeSelect } from './form-components/propeller-size-select/app-calculator-form-propeller-size-select.component';
@@ -35,6 +36,7 @@ const AppCalculatorFormComponents = [
     AppCalculatorFormPropellerSizeSelect,
     AppCalculatorFormNumberInput,
     AppCalculatorFormPercentageSelect,
+    AppCalculatorFormMachSelect,
 ];
 
 const MatModules = [MatCardModule, MatFormFieldModule, MatSelectModule, MatOptionModule, MatInputModule, MatIconModule];

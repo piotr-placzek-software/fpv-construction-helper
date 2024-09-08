@@ -21,3 +21,11 @@ export const PROPELLER_SIZE = {
     '10_INCH': 10,
 } as const;
 export type PropellerSize = ObjectValues<typeof PROPELLER_SIZE>;
+
+export const MACH_PART_VALUE = {
+    'Mach 0.9': 1012.5,
+    'Mach 0.889*': 1000,
+    'Mach 0.8': 900.26,
+    'Mach 0.7': 787.5,
+} as const;
+export type MachPart = ObjectValues<typeof MACH_PART_VALUE>;
