@@ -15,6 +15,7 @@ import { AppLayoutComponent } from './layout/app-layout.component';
 import { AppSideNavComponent } from './layout/side-nav/app-side-nav.component';
 import { AppToolbarComponent } from './layout/toolbar/app-toolbar.component';
 import { AppHomePageComponent } from './pages/home-page/app-home-page.component';
+import { AppUnderConstructionPageComponent } from './pages/under-construction/app-under-construction-page.component';
 
 const AppFeatureModules = [AppCalculatorModule];
 const MatModules = [MatToolbarModule, MatSidenavModule, MatCheckboxModule, MatIconModule];
@@ -38,6 +39,27 @@ export class AppModule {
                 path: 'home',
                 component: AppHomePageComponent,
             }),
+            new AppNavigationItem(
+                10,
+                'Parts database',
+                'format_list_bulleted',
+                { path: 'parts', component: AppUnderConstructionPageComponent },
+                true,
+            ),
+            new AppNavigationItem(
+                11,
+                'Shopping list',
+                'shopping_cart_checkout',
+                { path: 'cart', component: AppUnderConstructionPageComponent },
+                true,
+            ),
+            new AppNavigationItem(
+                12,
+                'Knowledge base',
+                'collections_bookmark',
+                { path: 'knowledge', component: AppUnderConstructionPageComponent },
+                true,
+            ),
         ]);
     }
 }
