@@ -1,0 +1,6 @@
+<mat-form-field>
+    <mat-label>Mach base</mat-label>
+    <mat-select [value]="value" (selectionChange)="updateValue($event)" (blur)="onTouched()">
+        <mat-option *ngFor="let option of machSelectorOptions" [value]="option.value">{{ option.label }}</mat-option>
+    </mat-select>
+</mat-form-field>

@@ -6,6 +6,9 @@
     <mat-card-content>
         <div class="flex gap-10 items-center mt-4" [formGroup]="form">
             <div class="flex gap-2 items-center">
+                <app-calculator-form-mach-select
+                formControlName="mach"
+                ></app-calculator-form-mach-select>
                 <app-calculator-form-battery-size-select
                     formControlName="batterySize"></app-calculator-form-battery-size-select>
                 <app-calculator-form-number-input
@@ -25,7 +28,7 @@
     <p>
         Propellers become less efficient and start to produce less thrust when the tip of the propeller approaches the
         speed of sound due to supersonic airflow and shock waves. The maximum thrust is usually generated when the
-        propeller tip speed is about 0.9 times the speed of sound, or about 1,000 feet per second.
+        propeller tip speed is about 0.9 times the speed of sound, or about 1,000 feet per second (mach 0.889).
     </p>
     <p>
         So, to get the tip of the propeller to max out at 1,000 feet per second, we need to know the diameter of the
@@ -42,5 +45,5 @@
             >Read more</a
         >
     </p>
-    <p class="text-center">KV<sub>opt</sub> = 720000 / (Propeller Diameter * π * V<sub>bat</sub>)</p>
+    <p class="text-center">KV<sub>opt</sub> = (Mach Base * 720) / (Propeller Diameter * π * V<sub>bat</sub>)</p>
 </ng-template>
