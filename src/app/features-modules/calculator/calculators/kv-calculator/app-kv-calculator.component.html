@@ -8,8 +8,9 @@
             <div class="flex gap-2 items-center">
                 <app-calculator-form-battery-size-select
                     formControlName="batterySize"></app-calculator-form-battery-size-select>
-                <app-calculator-form-propeller-size-select
-                    formControlName="propellerSize"></app-calculator-form-propeller-size-select>
+                <app-calculator-form-number-input
+                    label="Propeller size [inches]"
+                    formControlName="propellerSize"></app-calculator-form-number-input>
             </div>
             <h1>KV<sub>opt</sub> = {{ kv }}</h1>
         </div>
@@ -41,7 +42,5 @@
             >Read more</a
         >
     </p>
-    <p class="text-center">
-        KV<sub>opt</sub> = 720000 / (Propeller Diameter * π * V<sub>bat</sub>)
-    </p>
+    <p class="text-center">KV<sub>opt</sub> = 720000 / (Propeller Diameter * π * V<sub>bat</sub>)</p>
 </ng-template>
