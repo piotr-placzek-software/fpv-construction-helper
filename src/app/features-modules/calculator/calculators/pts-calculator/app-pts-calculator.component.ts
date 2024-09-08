@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AppTextDialogService } from '../../../../shared/text-dialog/app-text-dialog.service';
-import { AppCalculatorService } from '../../app-calculator.service';
+import { AppCalculatorService } from '../../services/app-calculator.service';
 import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-calculator.utils';
 
 const DEFAULT_LOSES = 0;
