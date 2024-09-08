@@ -4,6 +4,8 @@ import { AppTextDialogService } from '../../../../shared/text-dialog/app-text-di
 import { AppCalculatorService } from '../../app-calculator.service';
 import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-calculator.utils';
 
+const DEFAULT_LOSES = 0;
+
 @Component({
     selector: 'app-rpm-calculator',
     templateUrl: './app-rpm-calculator.component.html',
@@ -15,7 +17,7 @@ export class AppRpmCalculatorComponent {
     public form = new FormGroup({
         batterySize: new FormControl(),
         kv: new FormControl(),
-        loses: new FormControl(),
+        loses: new FormControl(DEFAULT_LOSES),
     });
 
     constructor(
@@ -41,7 +43,7 @@ export class AppRpmCalculatorComponent {
             this.rpm = this.appCalculatorService.calculateRpm(
                 this.form.controls.batterySize.value,
                 +this.form.controls.kv.value,
-                this.form.controls.loses.value,
+                this.form.controls.loses.value || DEFAULT_LOSES,
             );
         }
     }

@@ -4,6 +4,8 @@ import { AppTextDialogService } from '../../../../shared/text-dialog/app-text-di
 import { AppCalculatorService } from '../../app-calculator.service';
 import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-calculator.utils';
 
+const DEFAULT_MULTIPLIER = 4;
+
 @Component({
     selector: 'app-acceleration-calculator',
     templateUrl: './app-acceleration-calculator.component.html',
@@ -15,7 +17,7 @@ export class AppAccelerationCalculatorComponent implements OnInit {
     public form = new FormGroup({
         thrust: new FormControl(),
         weight: new FormControl(),
-        multiplier: new FormControl(),
+        multiplier: new FormControl(DEFAULT_MULTIPLIER),
     });
 
     constructor(
@@ -40,9 +42,9 @@ export class AppAccelerationCalculatorComponent implements OnInit {
             return;
         } else {
             this.a = this.appCalculatorService.calculateAcceleration(
-                +this.form.controls.thrust.value,
-                +this.form.controls.weight.value,
-                +this.form.controls.multiplier.value,
+                this.form.controls.thrust.value,
+                this.form.controls.weight.value,
+                this.form.controls.multiplier.value || DEFAULT_MULTIPLIER,
             );
         }
     }
