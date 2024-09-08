@@ -4,6 +4,7 @@ import { AppTextDialogService } from '../../../../shared/text-dialog/app-text-di
 import { AppCalculatorService } from '../../app-calculator.service';
 import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-calculator.utils';
 
+const DEFAULT_LOSES = 0;
 @Component({
     selector: 'app-pts-calculator',
     templateUrl: './app-pts-calculator.component.html',
@@ -16,7 +17,7 @@ export class AppPtsCalculatorComponent implements OnInit {
         batterySize: new FormControl(),
         propellerSize: new FormControl(),
         kv: new FormControl(),
-        loses: new FormControl(),
+        loses: new FormControl(DEFAULT_LOSES),
     });
 
     constructor(
@@ -44,8 +45,8 @@ export class AppPtsCalculatorComponent implements OnInit {
             this.pts = this.appCalculatorService.calculatePts(
                 this.form.controls.batterySize.value,
                 this.form.controls.propellerSize.value,
-                +this.form.controls.kv.value,
-                this.form.controls.loses.value,
+                this.form.controls.kv.value,
+                this.form.controls.loses.value || DEFAULT_LOSES,
             );
         }
     }
