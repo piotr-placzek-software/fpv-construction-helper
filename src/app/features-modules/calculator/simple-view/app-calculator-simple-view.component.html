@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-header class="flex justify-between mb-4">
-        <mat-card-title>All in one calculator</mat-card-title>
+        <mat-card-title>Basic calculator</mat-card-title>
         <mat-icon fontIcon="question_mark" (click)="openExplanationDialog()" class="hover:cursor-pointer"></mat-icon>
     </mat-card-header>
     <mat-card-content>
@@ -17,13 +17,20 @@
                 formControlName="loses"></app-calculator-form-percentage-select>
         </div>
         <div class="flex gap-10 flex-wrap">
-            <h1>KV<sub>opt</sub> = {{kv}}</h1>
-            <h1>RPM = {{rpm}}</h1>
-            <h1>PST = {{pts}} [m/s]</h1>
+            <h1>KV<sub>opt</sub> = {{ kv }}</h1>
+            <h1>RPM = {{ rpm }}</h1>
+            <h1>PST = {{ pts }} [m/s]</h1>
         </div>
     </mat-card-content>
 </mat-card>
 
 <ng-template #explanationContent>
-    <p>If you want to see specific calculators with dedicated explanation per parameter, you should turn off basic view.</p>
+    <p>
+        If you want to see specific calculators with dedicated explanation per parameter, you should turn off simple
+        view.
+    </p>
+    <p>
+        This view was created to simplify and speed up some of the calculations by minimizing the amount of entered
+        data.
+    </p>
 </ng-template>

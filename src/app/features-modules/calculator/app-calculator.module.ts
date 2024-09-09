@@ -13,7 +13,7 @@ import { AppNavigationItem } from '../../core-modules/navigation/app-navigation.
 import { AppNavigationService } from '../../core-modules/navigation/app-navigation.service';
 import { AppTextDialogModule } from '../../shared/text-dialog/app-text-dialog.module';
 import { AppAccelerationCalculatorComponent } from './calculators/acceleration-calculator/app-acceleration-calculator.component';
-import { AppCalculatorBasicViewComponent } from './basic-view/app-calculator-basic-view.component';
+
 import { AppKvCalculatorComponent } from './calculators/kv-calculator/app-kv-calculator.component';
 import { AppPtsCalculatorComponent } from './calculators/pts-calculator/app-pts-calculator.component';
 import { AppPtsConverterCalculatorComponent } from './calculators/pts-converter/app-pts-converter-calculator.component';
@@ -25,6 +25,7 @@ import { AppCalculatorFormPercentageSelect } from './form-components/percentage-
 import { AppCalculatorFormPropellerSizeSelect } from './form-components/propeller-size-select/app-calculator-form-propeller-size-select.component';
 import { AppCalculatorPage } from './page/app-calculator.page';
 import { AppCalculatorService } from './services/app-calculator.service';
+import { AppCalculatorSimpleViewComponent } from './simple-view/app-calculator-simple-view.component';
 
 const AppCalculatorComponents = [
     AppKvCalculatorComponent,
@@ -32,7 +33,7 @@ const AppCalculatorComponents = [
     AppAccelerationCalculatorComponent,
     AppPtsCalculatorComponent,
     AppPtsConverterCalculatorComponent,
-    AppCalculatorBasicViewComponent,
+    AppCalculatorSimpleViewComponent,
 ];
 const AppCalculatorFormComponents = [
     AppCalculatorFormBatterySizeSelect,

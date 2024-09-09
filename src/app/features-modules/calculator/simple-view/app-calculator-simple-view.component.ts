@@ -9,10 +9,10 @@ const DEFAULT_MACH = MACH_PART_VALUE['Mach 0.889*'];
 const DEFAULT_LOSES = 0;
 
 @Component({
-    selector: 'app-complex-calculator',
-    templateUrl: './app-calculator-basic-view.component.html',
+    selector: 'app-simple-calculator',
+    templateUrl: './app-calculator-simple-view.component.html',
 })
-export class AppCalculatorBasicViewComponent implements OnInit {
+export class AppCalculatorSimpleViewComponent implements OnInit {
     @ViewChild('explanationContent') explanationContentTemplateRef!: TemplateRef<unknown>;
     public kv = 0;
     public rpm = 0;
@@ -37,7 +37,7 @@ export class AppCalculatorBasicViewComponent implements OnInit {
 
     public openExplanationDialog(): void {
         this.appTextDialogService.open({
-            title: 'Basic view',
+            title: 'Simple view',
             contentTemplateRef: this.explanationContentTemplateRef,
         });
     }
