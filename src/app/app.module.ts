@@ -26,7 +26,7 @@ const AppLayoutComponents = [AppLayoutComponent, AppToolbarComponent, AppSideNav
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot([{ path: '', redirectTo: 'home', pathMatch: 'full' }]),
+        RouterModule.forRoot([]),
         ...MatModules,
         AppCoreModule,
         ...AppFeatureModules,
@@ -37,7 +37,7 @@ export class AppModule {
     constructor(appNavigationService: AppNavigationService) {
         appNavigationService.registerNavigationItems([
             new AppNavigationItem(0, 'Home Page', 'home', {
-                path: 'home',
+                path: '',
                 component: AppHomePageComponent,
             }),
             new AppNavigationItem(

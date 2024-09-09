@@ -3,6 +3,7 @@
         <a
             [routerLink]="item.route.path"
             routerLinkActive="bg-orange-700"
+            [routerLinkActiveOptions]="{ exact: true }"
             class="flex content-center gap-2 p-2"
             [ngClass]="{
                 'hover:bg-slate-600': !item.disabled,
