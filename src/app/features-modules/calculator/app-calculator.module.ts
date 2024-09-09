@@ -25,6 +25,7 @@ import { AppCalculatorFormPropellerSizeSelect } from './form-components/propelle
 import { AppCalculatorPage } from './page/app-calculator.page';
 import { AppCalculatorEventsService } from './services/app-calculator-events.service';
 import { AppCalculatorService } from './services/app-calculator.service';
+import { AppCalculatorBasicViewComponent } from './calculators/basic-view/app-calculator-basic-view.component';
 
 const AppCalculatorComponents = [
     AppKvCalculatorComponent,
@@ -32,6 +33,7 @@ const AppCalculatorComponents = [
     AppAccelerationCalculatorComponent,
     AppPtsCalculatorComponent,
     AppPtsConverterCalculatorComponent,
+    AppCalculatorBasicViewComponent,
 ];
 const AppCalculatorFormComponents = [
     AppCalculatorFormBatterySizeSelect,
