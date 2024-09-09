@@ -1,9 +1,9 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AppTextDialogService } from '../../../../shared/text-dialog/app-text-dialog.service';
-import { MACH_PART_VALUE } from '../../../../shared/types/fpv-specific.types';
-import { subscribeFormChanges } from '../../app-calculator.utils';
-import { AppCalculatorService } from '../../services/app-calculator.service';
+import { AppTextDialogService } from '../../../shared/text-dialog/app-text-dialog.service';
+import { MACH_PART_VALUE } from '../../../shared/types/fpv-specific.types';
+import { subscribeFormChanges } from '../app-calculator.utils';
+import { AppCalculatorService } from '../services/app-calculator.service';
 
 const DEFAULT_MACH = MACH_PART_VALUE['Mach 0.889*'];
 const DEFAULT_LOSES = 0;

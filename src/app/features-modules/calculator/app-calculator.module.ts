@@ -13,7 +13,7 @@ import { AppNavigationItem } from '../../core-modules/navigation/app-navigation.
 import { AppNavigationService } from '../../core-modules/navigation/app-navigation.service';
 import { AppTextDialogModule } from '../../shared/text-dialog/app-text-dialog.module';
 import { AppAccelerationCalculatorComponent } from './calculators/acceleration-calculator/app-acceleration-calculator.component';
-import { AppCalculatorBasicViewComponent } from './calculators/basic-view/app-calculator-basic-view.component';
+import { AppCalculatorBasicViewComponent } from './basic-view/app-calculator-basic-view.component';
 import { AppKvCalculatorComponent } from './calculators/kv-calculator/app-kv-calculator.component';
 import { AppPtsCalculatorComponent } from './calculators/pts-calculator/app-pts-calculator.component';
 import { AppPtsConverterCalculatorComponent } from './calculators/pts-converter/app-pts-converter-calculator.component';
