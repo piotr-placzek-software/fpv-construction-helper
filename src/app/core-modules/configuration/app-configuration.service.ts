@@ -9,7 +9,6 @@ export class AppConfigurationService {
         calculatorModule: {
             enabled: true,
             components: {
-                autoUpdate: false,
                 kvmax: true,
                 rpm: true,
                 acceleration: true,
