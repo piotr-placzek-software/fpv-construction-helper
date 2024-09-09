@@ -1,12 +1,12 @@
 <div class="p-2 flex flex-col gap-2">
-    <mat-slide-toggle [(ngModel)]="basicView"
-        >Basic view</mat-slide-toggle
+    <mat-slide-toggle [(ngModel)]="simpleView"
+        >Simple view</mat-slide-toggle
     >
-    <div *ngIf="basicView;else excluded">
-        <app-complex-calculator></app-complex-calculator>
+    <div *ngIf="simpleView;else fullView">
+        <app-simple-calculator></app-simple-calculator>
     </div>
 
-    <ng-template #excluded>
+    <ng-template #fullView>
         <app-kv-calculator *ngIf="featureFlags.kvmax"></app-kv-calculator>
         <app-rpm-calculator *ngIf="featureFlags.rpm"></app-rpm-calculator>
         <app-pts-calculator *ngIf="featureFlags.pts"></app-pts-calculator>

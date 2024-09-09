@@ -5,7 +5,7 @@ import { AppConfigurationService } from '../../../core-modules/configuration/app
     templateUrl: './app-calculator.page.html',
 })
 export class AppCalculatorPage {
-    public basicView = true;
+    public simpleView = false;
 
     constructor(private readonly appConfigurationService: AppConfigurationService) {}
 
