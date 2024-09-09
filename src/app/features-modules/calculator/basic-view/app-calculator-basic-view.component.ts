@@ -50,7 +50,7 @@ export class AppCalculatorBasicViewComponent implements OnInit {
         );
         this.rpm = this.appCalculatorService.calculateRpm(
             this.form.controls.batterySize.value,
-            this.form.controls.propellerSize.value,
+            this.form.controls.kv.value,
             this.form.controls.loses.value || DEFAULT_LOSES,
         );
         this.pts = this.appCalculatorService.calculatePts(
