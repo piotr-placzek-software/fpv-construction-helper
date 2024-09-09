@@ -1,12 +1,12 @@
 <mat-card>
-    <mat-card-header class="flex justify-between">
+    <mat-card-header class="flex justify-between mb-4">
         <mat-card-title>Propeller tip speed conversion</mat-card-title>
         <mat-icon fontIcon="question_mark" (click)="openExplanationDialog()" class="hover:cursor-pointer"></mat-icon>
     </mat-card-header>
     <mat-card-content>
-        <div class="flex gap-10 items-center mt-4" [formGroup]="form">
-            <div class="flex flex-col">
-                <div class="flex gap-2 items-center">
+        <div class="flex  flex-wrap gap-10 items-center" [formGroup]="form">
+            <div class="flex  flex-wrap flex-col">
+                <div class="flex  flex-wrap gap-2 items-center">
                     <app-calculator-form-battery-size-select
                         formControlName="batterySize"></app-calculator-form-battery-size-select>
                     <app-calculator-form-number-input
@@ -16,7 +16,7 @@
                         label="Env loses"
                         formControlName="loses"></app-calculator-form-percentage-select>
                 </div>
-                <div class="flex gap-2 items-center">
+                <div class="flex  flex-wrap gap-2 items-center">
                     <app-calculator-form-number-input
                         label="Primary prop size [inches]"
                         formControlName="primaryPropellerSize"></app-calculator-form-number-input>
