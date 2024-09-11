@@ -46,6 +46,10 @@ export class AppCalculatorService {
         return this.calculateKvRpm(batterySize, secondaryRpm);
     }
 
+    public calculateP2w(motorThrust: number, weight: number, multiplier = 4): number {
+        return this.round((motorThrust * multiplier) / weight, 0);
+    }
+
     private calculateSfm(batterySize: number, propellerSize: number, kv: number, loses = 0): number {
         const rpm = this.calculateRpm(batterySize, kv, loses);
         return rpm * propellerSize * (Math.PI / 12);

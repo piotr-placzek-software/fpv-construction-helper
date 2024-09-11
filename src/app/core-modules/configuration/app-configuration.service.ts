@@ -14,6 +14,7 @@ export class AppConfigurationService {
                 acceleration: true,
                 pts: true,
                 pts_c: true,
+                p2w: true,
             },
         },
     };
