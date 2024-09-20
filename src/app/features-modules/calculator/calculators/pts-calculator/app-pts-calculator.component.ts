@@ -1,51 +1,35 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { AppTextDialogService } from '../../../../shared/text-dialog/app-text-dialog.service';
-import { AppCalculatorService } from '../../services/app-calculator.service';
-import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-calculator.utils';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { DEFAULT_VALUE } from '../../app-calculator.defaults';
+import {
+    AppCalculatorBatterySizeFormControlConfig,
+    AppCalculatorNumericFormControlConfig,
+    AppCalculatorPercentageFormControlConfig,
+    IAppCalculatorConfig,
+} from '../../app-calculator.types';
 
-const DEFAULT_LOSES = 0;
 @Component({
     selector: 'app-pts-calculator',
     templateUrl: './app-pts-calculator.component.html',
 })
-export class AppPtsCalculatorComponent implements OnInit {
+export class AppPtsCalculatorComponent {
     @ViewChild('explanationContent') explanationContentTemplateRef!: TemplateRef<unknown>;
-    public pts = 0;
-
-    public form = new FormGroup({
-        batterySize: new FormControl(),
-        propellerSize: new FormControl(),
-        kv: new FormControl(),
-        loses: new FormControl(DEFAULT_LOSES),
-    });
-
-    constructor(
-        private readonly appCalculatorService: AppCalculatorService,
-        private readonly appTextDialogService: AppTextDialogService,
-    ) {}
-
-    ngOnInit(): void {
-        subscribeFormChanges(this.form, () => this.recalculatePts());
-    }
-
-    public openExplanationDialog(): void {
-        this.appTextDialogService.open({
-            title: 'Propeller tip speed',
-            contentTemplateRef: this.explanationContentTemplateRef,
-        });
-    }
-
-    private recalculatePts() {
-        if (fromControlsValuesIncludesNull(this.form)) {
-            this.pts = 0;
-        } else {
-            this.pts = this.appCalculatorService.calculatePts(
-                this.form.controls.batterySize.value,
-                this.form.controls.propellerSize.value,
-                this.form.controls.kv.value,
-                this.form.controls.loses.value || DEFAULT_LOSES,
+    config: IAppCalculatorConfig = {
+        title: 'Propeller tip speed',
+        valueName: 'PTS',
+        valueUnit: '[m/s]',
+        controlsConfig: [
+            new AppCalculatorBatterySizeFormControlConfig('batterySize', 1),
+            new AppCalculatorNumericFormControlConfig('propellerSize', 'Propeller size [inch]', 2),
+            new AppCalculatorNumericFormControlConfig('kv', 'KV', 3),
+            new AppCalculatorPercentageFormControlConfig('loses', 'Env loses [%]', 4, DEFAULT_VALUE.LOSES),
+        ],
+        recalculateFunction(form, appCalculatorService) {
+            return appCalculatorService.calculatePts(
+                form.controls['batterySize'].value,
+                form.controls['propellerSize'].value,
+                form.controls['kv'].value,
+                form.controls['loses'].value,
             );
-        }
-    }
+        },
+    };
 }

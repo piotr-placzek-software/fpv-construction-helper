@@ -3,8 +3,13 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { AppTextDialogService } from '../../../../shared/text-dialog/app-text-dialog.service';
 import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-calculator.utils';
 import { AppCalculatorService } from '../../services/app-calculator.service';
-
-const DEFAULT_LOSES = 0;
+import {
+    AppCalculatorBatterySizeFormControlConfig,
+    AppCalculatorPercentageFormControlConfig,
+    AppCalculatorNumericFormControlConfig,
+    IAppCalculatorConfig,
+} from '../../app-calculator.types';
+import { DEFAULT_VALUE } from '../../app-calculator.defaults';
 
 @Component({
     selector: 'app-rpm-calculator',
@@ -12,39 +17,20 @@ const DEFAULT_LOSES = 0;
 })
 export class AppRpmCalculatorComponent {
     @ViewChild('explanationContent') explanationContentTemplateRef!: TemplateRef<unknown>;
-    public rpm = 0;
-
-    public form = new FormGroup({
-        batterySize: new FormControl(),
-        kv: new FormControl(),
-        loses: new FormControl(DEFAULT_LOSES),
-    });
-
-    constructor(
-        private readonly appCalculatorService: AppCalculatorService,
-        private readonly appTextDialogService: AppTextDialogService,
-    ) {}
-
-    ngOnInit(): void {
-        subscribeFormChanges(this.form, () => this.recalculateRpm());
-    }
-
-    public openExplanationDialog(): void {
-        this.appTextDialogService.open({
-            title: 'Rotations per minute',
-            contentTemplateRef: this.explanationContentTemplateRef,
-        });
-    }
-
-    private recalculateRpm(): void {
-        if (fromControlsValuesIncludesNull(this.form)) {
-            this.rpm = 0;
-        } else {
-            this.rpm = this.appCalculatorService.calculateRpm(
-                this.form.controls.batterySize.value,
-                this.form.controls.kv.value,
-                this.form.controls.loses.value || DEFAULT_LOSES,
+    config: IAppCalculatorConfig = {
+        title: 'RPM',
+        valueName: 'RPM',
+        controlsConfig: [
+            new AppCalculatorBatterySizeFormControlConfig('batterySize', 1),
+            new AppCalculatorNumericFormControlConfig('kv', 'KV', 2),
+            new AppCalculatorPercentageFormControlConfig('loses', 'Env loses [%]', 3, DEFAULT_VALUE.LOSES),
+        ],
+        recalculateFunction(form, appCalculatorService) {
+            return appCalculatorService.calculateRpm(
+                form.controls['batterySize'].value,
+                form.controls['kv'].value,
+                form.controls['loses'].value,
             );
-        }
-    }
+        },
+    };
 }
