@@ -1,25 +1,4 @@
-<mat-card>
-    <mat-card-header class="flex justify-between mb-4">
-        <mat-card-title>Thrust to weight ratio</mat-card-title>
-        <mat-icon fontIcon="question_mark" (click)="openExplanationDialog()" class="hover:cursor-pointer"></mat-icon>
-    </mat-card-header>
-    <mat-card-content>
-        <div class="flex flex-wrap gap-10 items-center" [formGroup]="form">
-            <div class="flex flex-wrap gap-2 items-center">
-                <app-calculator-form-number-input
-                    label="Motor thrust [gf]"
-                    formControlName="motorThrust"></app-calculator-form-number-input>
-                    <app-calculator-form-number-input
-                    label="Weight [g]"
-                    formControlName="weight"></app-calculator-form-number-input>
-                    <app-calculator-form-number-input
-                    label="Motors amount"
-                    formControlName="multiplier"></app-calculator-form-number-input>
-            </div>
-            <h1>T/W = {{ p2w }} : 1</h1>
-        </div>
-    </mat-card-content>
-</mat-card>
+<app-calculator [config]="config" [explanationDialogTemplateRef]="explanationContentTemplateRef"></app-calculator>
 
 <ng-template #explanationContent>
     <p>

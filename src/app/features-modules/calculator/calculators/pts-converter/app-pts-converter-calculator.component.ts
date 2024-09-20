@@ -1,10 +1,11 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { AppTextDialogService } from '../../../../shared/text-dialog/app-text-dialog.service';
-import { AppCalculatorService } from '../../services/app-calculator.service';
-import { fromControlsValuesIncludesNull, subscribeFormChanges } from '../../app-calculator.utils';
-
-const DEFAULT_LOSES = 0;
+import { DEFAULT_VALUE } from '../../app-calculator.defaults';
+import {
+    AppCalculatorBatterySizeFormControlConfig,
+    AppCalculatorNumericFormControlConfig,
+    AppCalculatorPercentageFormControlConfig,
+    IAppCalculatorConfig,
+} from '../../app-calculator.types';
 
 @Component({
     selector: 'app-pts-converter-calculator',
@@ -12,45 +13,25 @@ const DEFAULT_LOSES = 0;
 })
 export class AppPtsConverterCalculatorComponent {
     @ViewChild('explanationContent') explanationContentTemplateRef!: TemplateRef<unknown>;
-    public kv = 0;
 
-    public form = new FormGroup({
-        batterySize: new FormControl(),
-        primaryPropellerSize: new FormControl(),
-        secondaryPropellerSize: new FormControl(),
-        primaryKv: new FormControl(),
-        loses: new FormControl(DEFAULT_LOSES),
-    });
-
-    constructor(
-        private readonly appCalculatorService: AppCalculatorService,
-        private readonly appTextDialogService: AppTextDialogService,
-    ) {}
-
-    ngOnInit(): void {
-        subscribeFormChanges(this.form, () => this.recalculatePts());
-    }
-
-    public openExplanationDialog(): void {
-        this.appTextDialogService.open({
-            title: 'Propeller tip speed conversion',
-            contentTemplateRef: this.explanationContentTemplateRef,
-        });
-    }
-
-    private recalculatePts() {
-        if (fromControlsValuesIncludesNull(this.form)) {
-            this.kv = 0;
-        } else {
-            console.log('calculation');
-
-            this.kv = this.appCalculatorService.convertPtsToSecondaryKv(
-                this.form.controls.batterySize.value,
-                this.form.controls.primaryPropellerSize.value,
-                this.form.controls.secondaryPropellerSize.value,
-                this.form.controls.primaryKv.value,
-                this.form.controls.loses.value || DEFAULT_LOSES,
+    config: IAppCalculatorConfig = {
+        title: 'Propeller tip speed conversion',
+        valueName: 'KV',
+        controlsConfig: [
+            new AppCalculatorBatterySizeFormControlConfig('batterySize', 1),
+            new AppCalculatorNumericFormControlConfig('primaryKv', 'Primary motor KV', 2),
+            new AppCalculatorPercentageFormControlConfig('loses', 'Env loses [%]', 3, DEFAULT_VALUE.LOSES),
+            new AppCalculatorNumericFormControlConfig('primaryPropellerSize', 'Primary prop size [inch]', 4),
+            new AppCalculatorNumericFormControlConfig('secondaryPropellerSize', 'Secondary prop size [inch]', 5),
+        ],
+        recalculateFunction(form, appCalculatorService) {
+            return appCalculatorService.convertPtsToSecondaryKv(
+                form.controls['batterySize'].value,
+                form.controls['primaryKv'].value,
+                form.controls['loses'].value,
+                form.controls['primaryPropellerSize'].value,
+                form.controls['secondaryPropellerSize'].value,
             );
-        }
-    }
+        },
+    };
 }

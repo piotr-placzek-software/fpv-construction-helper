@@ -1,31 +1,4 @@
-<mat-card>
-    <mat-card-header class="flex justify-between mb-4">
-        <mat-card-title>Propeller tip speed</mat-card-title>
-        <mat-icon fontIcon="question_mark" (click)="openExplanationDialog()" class="hover:cursor-pointer"></mat-icon>
-    </mat-card-header>
-    <mat-card-content>
-        <div class="flex flex-wrap gap-10 items-center" [formGroup]="form">
-            <div class="flex flex-wrap flex-col">
-                <div class="flex flex-wrap gap-2 items-center">
-                    <app-calculator-form-battery-size-select
-                        formControlName="batterySize"></app-calculator-form-battery-size-select>
-                    <app-calculator-form-number-input
-                        label="Motor KV"
-                        formControlName="kv"></app-calculator-form-number-input>
-                    <app-calculator-form-percentage-select
-                        label="Env loses"
-                        formControlName="loses"></app-calculator-form-percentage-select>
-                </div>
-                <div class="flex flex-wrap gap-2 items-center">
-                    <app-calculator-form-number-input
-                        label="Propeller size [inches]"
-                        formControlName="propellerSize"></app-calculator-form-number-input>
-                </div>
-            </div>
-            <h1>PTS = {{ pts }} [m/s]</h1>
-        </div>
-    </mat-card-content>
-</mat-card>
+<app-calculator [config]="config" [explanationDialogTemplateRef]="explanationContentTemplateRef"></app-calculator>
 
 <ng-template #explanationContent>
     <p>

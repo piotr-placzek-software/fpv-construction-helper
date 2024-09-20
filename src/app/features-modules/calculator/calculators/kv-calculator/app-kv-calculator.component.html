@@ -1,24 +1,4 @@
-<mat-card>
-    <mat-card-header class="flex justify-between mb-4">
-        <mat-card-title>Optimal KV rating</mat-card-title>
-        <mat-icon fontIcon="question_mark" (click)="openExplanationDialog()" class="hover:cursor-pointer"></mat-icon>
-    </mat-card-header>
-    <mat-card-content>
-        <div class="flex flex-wrap gap-10 items-center" [formGroup]="form">
-            <div class="flex flex-wrap gap-2 items-center">
-                <app-calculator-form-mach-select
-                formControlName="mach"
-                ></app-calculator-form-mach-select>
-                <app-calculator-form-battery-size-select
-                    formControlName="batterySize"></app-calculator-form-battery-size-select>
-                <app-calculator-form-number-input
-                    label="Propeller size [inches]"
-                    formControlName="propellerSize"></app-calculator-form-number-input>
-            </div>
-            <h1>KV<sub>opt</sub> = {{ kv }}</h1>
-        </div>
-    </mat-card-content>
-</mat-card>
+<app-calculator [config]="config" [explanationDialogTemplateRef]="explanationContentTemplateRef"></app-calculator>
 
 <ng-template #explanationContent>
     <p>

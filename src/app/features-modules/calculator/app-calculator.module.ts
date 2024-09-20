@@ -14,7 +14,9 @@ import { AppNavigationService } from '../../core-modules/navigation/app-navigati
 import { AppTextDialogModule } from '../../shared/text-dialog/app-text-dialog.module';
 import { AppAccelerationCalculatorComponent } from './calculators/acceleration-calculator/app-acceleration-calculator.component';
 
+import { AppCalculatorComponent } from './app-calculator.component';
 import { AppKvCalculatorComponent } from './calculators/kv-calculator/app-kv-calculator.component';
+import { AppPowerToWeightCalculatorComponent } from './calculators/power-to-weight-calculator/app-power-to-weight-calculator.component';
 import { AppPtsCalculatorComponent } from './calculators/pts-calculator/app-pts-calculator.component';
 import { AppPtsConverterCalculatorComponent } from './calculators/pts-converter/app-pts-converter-calculator.component';
 import { AppRpmCalculatorComponent } from './calculators/rpm-calculator/app-rpm-calculator.component';
@@ -26,9 +28,9 @@ import { AppCalculatorFormPropellerSizeSelect } from './form-components/propelle
 import { AppCalculatorPage } from './page/app-calculator.page';
 import { AppCalculatorService } from './services/app-calculator.service';
 import { AppCalculatorSimpleViewComponent } from './simple-view/app-calculator-simple-view.component';
-import { AppPowerToWeightCalculatorComponent } from './calculators/power-to-weight-calculator/app-power-to-weight-calculator.component';
 
 const AppCalculatorComponents = [
+    AppCalculatorComponent,
     AppKvCalculatorComponent,
     AppRpmCalculatorComponent,
     AppAccelerationCalculatorComponent,
@@ -56,7 +58,12 @@ const MatModules = [
 ];
 
 @NgModule({
-    declarations: [AppCalculatorPage, ...AppCalculatorComponents, ...AppCalculatorFormComponents],
+    declarations: [
+        AppCalculatorPage,
+        ...AppCalculatorComponents,
+        ...AppCalculatorFormComponents,
+        AppCalculatorComponent,
+    ],
     imports: [FormsModule, ReactiveFormsModule, AppCoreModule, ...MatModules, AppTextDialogModule],
     providers: [AppCalculatorService],
 })
