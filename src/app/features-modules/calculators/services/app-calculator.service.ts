@@ -36,13 +36,13 @@ export class AppCalculatorService {
 
     public convertPtsToSecondaryKv(
         batterySize: number,
-        primarynumber: number,
-        secondarynumber: number,
+        primaryPropellerSize: number,
+        secondaryPropellerSize: number,
         primaryKv: number,
         loses = 0,
     ): number {
-        const primarySfm = this.calculateSfm(batterySize, primarynumber, primaryKv, loses);
-        const secondaryRpm = this.calculateRpmFromSfm(primarySfm, secondarynumber);
+        const primarySfm = this.calculateSfm(batterySize, primaryPropellerSize, primaryKv, loses);
+        const secondaryRpm = this.calculateRpmFromSfm(primarySfm, secondaryPropellerSize);
         return this.calculateKvRpm(batterySize, secondaryRpm);
     }
 

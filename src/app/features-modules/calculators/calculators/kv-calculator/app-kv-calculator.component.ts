@@ -1,11 +1,11 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { MACH_PART_VALUE } from '../../../../shared/types/fpv-specific.types';
 import {
     AppCalculatorBatterySizeFormControlConfig,
-    IAppCalculatorConfig,
     AppCalculatorMachFormControlConfig,
     AppCalculatorNumericFormControlConfig,
-} from '../../app-calculator.types';
+    IAppCalculatorConfig,
+} from '../../../../shared/modules/calculator/app-calculator.types';
+import { MACH_PART_VALUE } from '../../../../shared/types/fpv-specific.types';
 
 const DEFAULT_MACH = MACH_PART_VALUE['Mach 0.889*'];
 

@@ -11,14 +11,14 @@ import { AppComponent } from './app.component';
 import { AppCoreModule } from './core-modules/app-core.module';
 import { AppNavigationItem } from './core-modules/navigation/app-navigation.item';
 import { AppNavigationService } from './core-modules/navigation/app-navigation.service';
-import { AppCalculatorModule } from './features-modules/calculator/app-calculator.module';
+import { AppCalculatorsModule } from './features-modules/calculators/app-calulators.module';
 import { AppLayoutComponent } from './layout/app-layout.component';
 import { AppSideNavComponent } from './layout/side-nav/app-side-nav.component';
 import { AppToolbarComponent } from './layout/toolbar/app-toolbar.component';
 import { AppHomePageComponent } from './pages/home-page/app-home-page.component';
 import { AppUnderConstructionPageComponent } from './pages/under-construction/app-under-construction-page.component';
 
-const AppFeatureModules = [AppCalculatorModule];
+const AppFeatureModules = [AppCalculatorsModule];
 const MatModules = [MatToolbarModule, MatSidenavModule, MatCheckboxModule, MatIconModule, MatProgressBarModule];
 const AppLayoutComponents = [AppLayoutComponent, AppToolbarComponent, AppSideNavComponent];
 @NgModule({
