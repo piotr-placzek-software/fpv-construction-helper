@@ -1,7 +1,7 @@
 import { TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ObjectValues } from '../../types/ts-specific.types';
-import { AppCalculatorService } from '../../../features-modules/calculators/services/app-calculator.service';
+import { AppCalculatorService } from '../../../features-modules/calculators/app-calculator.service';
 import { DEFAULT_VALUE } from './app-calculator.defaults';
 
 export const APP_CALCULATOR_FORM_CONTROL_TYPE = {
@@ -70,5 +70,5 @@ export interface IAppCalculatorConfig {
     valueName: string;
     valueUnit?: string;
     controlsConfig: AppCalculatorFormControlConfig[];
-    recalculateFunction: (form: FormGroup, appCalculatorService: AppCalculatorService) => number;
+    recalculateFunction: (form: FormGroup) => number;
 }

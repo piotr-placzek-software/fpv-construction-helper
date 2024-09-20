@@ -4,7 +4,6 @@ import { divideFormConfigIntoChunks } from '../../functions/divideFlatArrayIntoC
 import { AppTextDialogService } from '../text-dialog/app-text-dialog.service';
 import { AppCalculatorFormControlConfig, IAppCalculatorConfig } from './app-calculator.types';
 import { fromControlsValuesIncludesNull, subscribeFormChanges } from './app-calculator.utils';
-import { AppCalculatorService } from '../../../features-modules/calculators/services/app-calculator.service';
 
 @Component({
     selector: 'app-calculator',
@@ -18,10 +17,7 @@ export class AppCalculatorComponent implements OnInit {
     public form = new FormGroup({});
     public chunkedFormConfig: AppCalculatorFormControlConfig[][] = [];
 
-    constructor(
-        private readonly appCalculatorService: AppCalculatorService,
-        private readonly appTextDialogService: AppTextDialogService,
-    ) {}
+    constructor(private readonly appTextDialogService: AppTextDialogService) {}
 
     ngOnInit(): void {
         this.chunkedFormConfig = divideFormConfigIntoChunks(
@@ -46,7 +42,7 @@ export class AppCalculatorComponent implements OnInit {
         if (fromControlsValuesIncludesNull(this.form)) {
             this.value = 0;
         } else {
-            this.value = this.config.recalculateFunction(this.form, this.appCalculatorService);
+            this.value = this.config.recalculateFunction(this.form);
         }
     }
 }
