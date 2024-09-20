@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { divideFormConfigIntoChunks } from '../../shared/functions/divideFlatArrayIntoChunkedArray.fn';
-import { AppTextDialogService } from '../../shared/text-dialog/app-text-dialog.service';
+import { divideFormConfigIntoChunks } from '../../functions/divideFlatArrayIntoChunkedArray.fn';
+import { AppTextDialogService } from '../text-dialog/app-text-dialog.service';
 import { AppCalculatorFormControlConfig, IAppCalculatorConfig } from './app-calculator.types';
 import { fromControlsValuesIncludesNull, subscribeFormChanges } from './app-calculator.utils';
-import { AppCalculatorService } from './services/app-calculator.service';
+import { AppCalculatorService } from '../../../features-modules/calculators/services/app-calculator.service';
 
 @Component({
     selector: 'app-calculator',

@@ -1,11 +1,11 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { DEFAULT_VALUE } from '../../app-calculator.defaults';
+import { DEFAULT_VALUE } from '../../../../shared/modules/calculator/app-calculator.defaults';
 import {
     AppCalculatorBatterySizeFormControlConfig,
     AppCalculatorNumericFormControlConfig,
     AppCalculatorPercentageFormControlConfig,
     IAppCalculatorConfig,
-} from '../../app-calculator.types';
+} from '../../../../shared/modules/calculator/app-calculator.types';
 
 @Component({
     selector: 'app-pts-converter-calculator',

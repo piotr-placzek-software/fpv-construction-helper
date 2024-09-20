@@ -1,0 +1,8 @@
+<div class="p-2 flex flex-col gap-2">
+    <app-kv-calculator *ngIf="featureFlags.kvmax"></app-kv-calculator>
+    <app-rpm-calculator *ngIf="featureFlags.rpm"></app-rpm-calculator>
+    <app-pts-calculator *ngIf="featureFlags.pts"></app-pts-calculator>
+    <app-pts-converter-calculator *ngIf="featureFlags.pts_c"></app-pts-converter-calculator>
+    <app-acceleration-calculator *ngIf="featureFlags.acceleration"></app-acceleration-calculator>
+    <app-power-to-weight-calculator *ngIf="featureFlags.p2w"></app-power-to-weight-calculator>
+</div>
