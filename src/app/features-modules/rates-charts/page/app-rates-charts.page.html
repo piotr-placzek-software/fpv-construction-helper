@@ -1,0 +1,40 @@
+<div class="p-2 flex flex-col gap-2">
+    <mat-card>
+        <mat-card-header class="flex justify-between mb-4">
+            <mat-card-title>Rates</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="flex flex-wrap gap-4" >
+                <div class="flex flex-col">
+                    <h2>Betaflight</h2>
+                    <div class="flex flex-wrap gap-2 items-center" [formGroup]="betaflightRatesForm">
+                        <app-calculator-form-number-input
+                            label="Rate"
+                            formControlName="rate"></app-calculator-form-number-input>
+                        <app-calculator-form-number-input
+                            label="Super"
+                            formControlName="superRate"></app-calculator-form-number-input>
+                        <app-calculator-form-number-input
+                            label="Expo"
+                            formControlName="expo"></app-calculator-form-number-input>
+                            <p>{{ betaflightRotationSpeed }}</p>
+                    </div>
+                    <!-- <h2>Actual</h2>
+                    <div class="flex flex-wrap gap-2 items-center" [formGroup]="actualRatesForm">
+                        <app-calculator-form-number-input
+                            label="Center rate"
+                            formControlName="centerRate"></app-calculator-form-number-input>
+                        <app-calculator-form-number-input
+                            label="Max rate"
+                            formControlName="maxRate"></app-calculator-form-number-input>
+                        <app-calculator-form-number-input
+                            label="Expo"
+                            formControlName="expo"></app-calculator-form-number-input>
+                            <p>{{ actualRotationSpeed }}</p>
+                    </div> -->
+                </div>
+                <div echarts [options]="chartOptions" [merge]="chartValues" class="chart"></div>
+            </div>
+        </mat-card-content> 
+    </mat-card>
+</div>
