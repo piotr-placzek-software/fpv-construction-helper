@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { AppConfigurationService } from '../../core-modules/configuration/app-configuration.service';
@@ -11,7 +12,7 @@ import { AppRatesChartsPage } from './page/app-rates-charts.page';
 
 @NgModule({
     declarations: [AppRatesChartsPage],
-    imports: [NgxEchartsModule.forRoot({ echarts }), AppCalculatorFormsModule, MatCardModule],
+    imports: [NgxEchartsModule.forRoot({ echarts }), AppCalculatorFormsModule, MatCardModule, MatCheckboxModule],
     providers: [AppRatesChartsService],
 })
 export class AppRatesChartsModule {

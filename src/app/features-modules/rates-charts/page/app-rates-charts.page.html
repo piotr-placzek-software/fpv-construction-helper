@@ -7,7 +7,9 @@
             <div class="flex flex-wrap gap-4">
                 <div class="flex flex-col">
                     <div [formGroup]="betaflightRatesForm">
-                        <h2>Betaflight rates</h2>
+                        <mat-checkbox formControlName="visible">
+                            <h2 class="!my-0">Betaflight rates</h2>
+                        </mat-checkbox>
                         <div class="flex flex-wrap gap-2 items-center">
                             <app-calculator-form-number-input
                                 label="Rate"
@@ -22,7 +24,9 @@
                         </div>
                     </div>
                     <div [formGroup]="actualRatesForm">
-                        <h2>Actual rates</h2>
+                        <mat-checkbox formControlName="visible">
+                            <h2 class="!my-0">Actual rates</h2>
+                        </mat-checkbox>
                         <div class="flex flex-wrap gap-2 items-center">
                             <app-calculator-form-number-input
                                 label="Center rate"
