@@ -14,7 +14,7 @@ export class AppRatesChartsService {
         ];
     }
 
-    private readonly positiveStickPositions = Array(X_RANGE)
+    private readonly positiveStickPositions = Array(X_RANGE + 1)
         .fill(0)
         .map((_, i) => i / X_RANGE);
 
@@ -43,6 +43,6 @@ export class AppRatesChartsService {
 
     private calculateActualRateValue(stickPosition: number, centerRate: number, maxRate: number, expo: number): number {
         const expoFactor = stickPosition * (Math.pow(stickPosition, 5) * expo + stickPosition * (1 - expo));
-        return centerRate * stickPosition + (maxRate - centerRate) * expoFactor;
+        return Math.round(centerRate * stickPosition + (maxRate - centerRate) * expoFactor);
     }
 }
