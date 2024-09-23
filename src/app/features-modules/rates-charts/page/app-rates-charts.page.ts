@@ -24,12 +24,14 @@ export class AppRatesChartsPage implements OnInit {
         rate: new FormControl(1),
         superRate: new FormControl(0.7),
         expo: new FormControl(0),
+        visible: new FormControl(true),
     });
 
     public readonly actualRatesForm = new FormGroup({
         centerRate: new FormControl(220),
         maxRate: new FormControl(667),
         expo: new FormControl(0.65),
+        visible: new FormControl(true),
     });
 
     constructor(private readonly service: AppRatesChartsService) {
@@ -47,12 +49,24 @@ export class AppRatesChartsPage implements OnInit {
                 valueFormatter: (value) => `${Number(value) < 0 ? Number(value) * -1 : value} [deg/s]`,
             },
             xAxis: {
+                name: 'Stick input [%]',
+                nameLocation: 'middle',
+                nameTextStyle: {
+                    padding: 16,
+                },
                 data: service.stickPositions,
                 splitLine: {
                     show: false,
                 },
             },
-            yAxis: { splitLine: { show: false } },
+            yAxis: {
+                name: 'Response [deg/s]',
+                nameLocation: 'middle',
+                nameTextStyle: {
+                    padding: 24,
+                },
+                splitLine: { show: false },
+            },
             series: [
                 {
                     name: 'Betaflight',
@@ -88,7 +102,7 @@ export class AppRatesChartsPage implements OnInit {
             this.betaflightRatesForm.controls.expo.value || 0,
         );
         this.betaflightRotationSpeed = `${newValues.at(-1)} [deg/s]`;
-        this.updateChart(newValues, SERIES_INDEX.BETAFLIGHT);
+        this.updateChart(newValues, SERIES_INDEX.BETAFLIGHT, this.betaflightRatesForm.controls.visible.value ?? false);
     }
 
     private calculateActualRates(): void {
@@ -98,12 +112,12 @@ export class AppRatesChartsPage implements OnInit {
             this.actualRatesForm.controls.expo.value || 0.65,
         );
         this.actualRotationSpeed = `${newValues.at(-1)} [deg/s]`;
-        this.updateChart(newValues, SERIES_INDEX.ACTUAL);
+        this.updateChart(newValues, SERIES_INDEX.ACTUAL, this.actualRatesForm.controls.visible.value ?? false);
     }
 
-    private updateChart(newValues: number[], sIndex: number): void {
+    private updateChart(newValues: number[], sIndex: number, visibility = true): void {
         const actualSeries = this.chartOptions.series as SeriesOption[];
-        actualSeries[sIndex].data = newValues;
+        actualSeries[sIndex].data = visibility ? newValues : [];
 
         this.chartOptions = Object.assign({}, this.chartOptions, {
             series: actualSeries,
