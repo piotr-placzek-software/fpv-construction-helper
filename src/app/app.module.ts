@@ -18,6 +18,7 @@ import { AppSideNavComponent } from './layout/side-nav/app-side-nav.component';
 import { AppToolbarComponent } from './layout/toolbar/app-toolbar.component';
 import { AppHomePageComponent } from './pages/home-page/app-home-page.component';
 import { AppUnderConstructionPageComponent } from './pages/under-construction/app-under-construction-page.component';
+import { AppDataTableModule } from './shared/modules/data-table/app-data-table.module';
 
 const AppFeatureModules = [AppCalculatorsModule, AppRatesChartsModule];
 const MatModules = [MatToolbarModule, MatSidenavModule, MatCheckboxModule, MatIconModule, MatProgressBarModule];
@@ -31,6 +32,7 @@ const AppLayoutComponents = [AppLayoutComponent, AppToolbarComponent, AppSideNav
         ...MatModules,
         AppCoreModule,
         ...AppFeatureModules,
+        AppDataTableModule,
     ],
     bootstrap: [AppComponent],
 })

@@ -6,13 +6,13 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { AppConfigurationService } from '../../core-modules/configuration/app-configuration.service';
 import { AppNavigationItem } from '../../core-modules/navigation/app-navigation.item';
 import { AppNavigationService } from '../../core-modules/navigation/app-navigation.service';
-import { AppCalculatorFormsModule } from '../../shared/modules/calculator-form-components/app-calculator-form.module';
+import { AppFormComponentsModule } from '../../shared/modules/form-components/app-form-components.module';
 import { AppRatesChartsService } from './app-rates-charts.service';
 import { AppRatesChartsPage } from './page/app-rates-charts.page';
 
 @NgModule({
     declarations: [AppRatesChartsPage],
-    imports: [NgxEchartsModule.forRoot({ echarts }), AppCalculatorFormsModule, MatCardModule, MatCheckboxModule],
+    imports: [NgxEchartsModule.forRoot({ echarts }), AppFormComponentsModule, MatCardModule, MatCheckboxModule],
     providers: [AppRatesChartsService],
 })
 export class AppRatesChartsModule {

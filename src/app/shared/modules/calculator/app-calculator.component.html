@@ -12,23 +12,23 @@
             <div class="flex flex-col">
                 <div class="flex flex-wrap gap-2 items-center" *ngFor="let chunk of chunkedFormConfig">
                     <ng-container *ngFor="let control of chunk">
-                        <app-calculator-form-mach-select
+                        <app-form-mach-select
                             *ngIf="control.type === 'mach'"
-                            [formControlName]="control.formControlName"></app-calculator-form-mach-select>
+                            [formControlName]="control.formControlName"></app-form-mach-select>
 
-                        <app-calculator-form-battery-size-select
+                        <app-form-battery-size-select
                             *ngIf="control.type === 'battery-size'"
-                            [formControlName]="control.formControlName"></app-calculator-form-battery-size-select>
+                            [formControlName]="control.formControlName"></app-form-battery-size-select>
 
-                        <app-calculator-form-number-input
+                        <app-form-number-input
                             *ngIf="control.type === 'numeric'"
                             [label]="control.label"
-                            [formControlName]="control.formControlName"></app-calculator-form-number-input>
+                            [formControlName]="control.formControlName"></app-form-number-input>
 
-                        <app-calculator-form-percentage-select
+                        <app-form-percentage-select
                             *ngIf="control.type === 'percentage'"
                             [label]="control.label"
-                            [formControlName]="control.formControlName"></app-calculator-form-percentage-select>
+                            [formControlName]="control.formControlName"></app-form-percentage-select>
                     </ng-container>
                 </div>
             </div>
