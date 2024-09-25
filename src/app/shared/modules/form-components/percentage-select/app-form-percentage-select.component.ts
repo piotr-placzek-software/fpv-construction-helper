@@ -1,20 +1,20 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
-import { FormSelectOption } from '../../../../shared/types/forms-specific.types';
+import { FormSelectOption } from '../../../types/forms-specific.types';
 
 @Component({
-    selector: 'app-calculator-form-percentage-select',
-    templateUrl: './app-calculator-form-percentage-select.component.html',
+    selector: 'app-form-percentage-select',
+    templateUrl: './app-form-percentage-select.component.html',
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => AppCalculatorFormPercentageSelect),
+            useExisting: forwardRef(() => AppFormPercentageSelect),
             multi: true,
         },
     ],
 })
-export class AppCalculatorFormPercentageSelect implements ControlValueAccessor {
+export class AppFormPercentageSelect implements ControlValueAccessor {
     @Input() label?: string;
 
     public value = 0;

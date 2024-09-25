@@ -2,17 +2,17 @@ import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'app-calculator-form-number-input',
-    templateUrl: './app-calculator-form-number-input.component.html',
+    selector: 'app-form-number-input',
+    templateUrl: './app-form-number-input.component.html',
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => AppCalculatorFormNumberInput),
+            useExisting: forwardRef(() => AppFormNumberInput),
             multi: true,
         },
     ],
 })
-export class AppCalculatorFormNumberInput implements ControlValueAccessor {
+export class AppFormNumberInput implements ControlValueAccessor {
     @Input() label?: string;
     @Input() step = 50;
 

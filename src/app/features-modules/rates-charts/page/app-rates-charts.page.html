@@ -11,15 +11,9 @@
                             <h2 class="!my-0">Betaflight rates</h2>
                         </mat-checkbox>
                         <div class="flex flex-wrap gap-2 items-center">
-                            <app-calculator-form-number-input
-                                label="Rate"
-                                formControlName="rate"></app-calculator-form-number-input>
-                            <app-calculator-form-number-input
-                                label="Super"
-                                formControlName="superRate"></app-calculator-form-number-input>
-                            <app-calculator-form-number-input
-                                label="Expo"
-                                formControlName="expo"></app-calculator-form-number-input>
+                            <app-form-number-input label="Rate" formControlName="rate"></app-form-number-input>
+                            <app-form-number-input label="Super" formControlName="superRate"></app-form-number-input>
+                            <app-form-number-input label="Expo" formControlName="expo"></app-form-number-input>
                             <p>{{ betaflightRotationSpeed }}</p>
                         </div>
                     </div>
@@ -28,15 +22,11 @@
                             <h2 class="!my-0">Actual rates</h2>
                         </mat-checkbox>
                         <div class="flex flex-wrap gap-2 items-center">
-                            <app-calculator-form-number-input
+                            <app-form-number-input
                                 label="Center rate"
-                                formControlName="centerRate"></app-calculator-form-number-input>
-                            <app-calculator-form-number-input
-                                label="Max rate"
-                                formControlName="maxRate"></app-calculator-form-number-input>
-                            <app-calculator-form-number-input
-                                label="Expo"
-                                formControlName="expo"></app-calculator-form-number-input>
+                                formControlName="centerRate"></app-form-number-input>
+                            <app-form-number-input label="Max rate" formControlName="maxRate"></app-form-number-input>
+                            <app-form-number-input label="Expo" formControlName="expo"></app-form-number-input>
                             <p>{{ actualRotationSpeed }}</p>
                         </div>
                     </div>
