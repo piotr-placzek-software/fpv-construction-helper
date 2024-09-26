@@ -1,0 +1,109 @@
+<mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+            <ng-container
+                [ngTemplateOutlet]="filterSelect"
+                [ngTemplateOutletContext]="{
+                    formControlName: 'selected',
+                    options: checkboxSelectOptions
+                }"></ng-container>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <mat-checkbox
+            (click)="$event.stopPropagation()"
+            (change)="toggleSelection(row)"
+            [checked]="row.selected"
+            ></mat-checkbox>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container *ngFor="let column of columnsConfig" [matColumnDef]="column.columnDef">
+        <mat-header-cell *matHeaderCellDef class="items-start">
+            <div class="flex flex-col mt-2 mb-2 w-full">
+                <div class="flex pl-2 items-center">
+                    <h2 class="!mt-0 !mr-2 !mb-0">
+                        {{ column.title }}
+                        <span *ngIf="column.valueSuffix">[{{ column.valueSuffix }}]</span>
+                    </h2>
+                    <ng-container
+                        *ngIf="column.sortable"
+                        [ngTemplateOutlet]="sortChange"
+                        [ngTemplateOutletContext]="{ columnName: column.columnDef }"></ng-container>
+                </div>
+
+                <ng-container [ngSwitch]="column.type" *ngIf="column.filterable">
+                    <ng-container
+                        *ngSwitchCase="'boolean'"
+                        [ngTemplateOutlet]="filterSelect"
+                        [ngTemplateOutletContext]="{
+                            formControlName: column.columnDef,
+                            options: column.selectOptions || defaultBooleanSelectOptions
+                        }"></ng-container>
+                    <ng-container
+                        *ngSwitchDefault
+                        [ngTemplateOutlet]="filterInput"
+                        [ngTemplateOutletContext]="{
+                            type: column.type,
+                            formControlName: column.columnDef
+                        }"></ng-container>
+                </ng-container>
+            </div>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row[column.columnDef] }} </mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="matRowDef"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: matRowDef"></mat-row>
+    
+    <mat-row *matNoDataRow>
+        <mat-cell colspan="2" class="no-data-cell">
+            No data available
+        </mat-cell>
+    </mat-row>
+</mat-table>
+
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+<mat-paginator
+    [length]="pagination.itemsTotal"
+    [pageSizeOptions]="pagination.pageSizeOptions"
+    (page)="pageChange.emit($event)"
+    aria-label="Select page of periodic elements">
+</mat-paginator>
+
+
+<ng-template #sortChange let-columnName="columnName">
+    <div (click)="switchSorting(columnName)" [ngSwitch]="sortFormGroup.get(columnName)!.value">
+        <mat-icon *ngSwitchDefault aria-hidden="false" aria-label="Unsorted" fontIcon="swap_vert"></mat-icon>
+        <mat-icon
+            *ngSwitchCase="'asc'"
+            aria-hidden="false"
+            aria-label="Ascending sort"
+            fontIcon="arrow_upward_alt"></mat-icon>
+        <mat-icon
+            *ngSwitchCase="'desc'"
+            aria-hidden="false"
+            aria-label="Descending sort"
+            fontIcon="arrow_downward_alt"></mat-icon>
+    </div>
+</ng-template>
+
+<ng-template #filterInput let-type="type" let-formControlName="formControlName" let-placeholder="placeholder">
+    <div [formGroup]="filterFormGroup">
+        <input
+            [type]="type"
+            class="inline-block w-full h-9 rounded border border-[#ffffff1f] p-1.5 bg-transparent text-white-900 placeholder:text-white-400 sm:text-sm sm:leading-6"
+            [formControlName]="formControlName"
+            [placeholder]="placeholder || 'filter'" />
+    </div>
+</ng-template>
+
+<ng-template #filterSelect let-formControlName="formControlName" let-placeholder="placeholder" let-options="options">
+    <div [formGroup]="filterFormGroup">
+        <select
+            [formControlName]="formControlName"
+            class="inline-block w-full h-9 rounded border border-[#ffffff1f] p-1.5 bg-transparent text-white-900 placeholder:text-white-400 sm:text-sm sm:leading-6">
+            <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+        </select>
+    </div>
+</ng-template>
