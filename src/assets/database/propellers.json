@@ -1,0 +1,11 @@
+[
+    {
+        "title": "GF 3520-3 Hurricane",
+        "declaredWeight": 1.77,
+        "size": 3.5,
+        "blades": 3,
+        "pitch": 2,
+        "mounting": ["5mm", "tmount"],
+        "measuredWeight": null
+    }
+]

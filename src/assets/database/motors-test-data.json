@@ -1,0 +1,24 @@
+[
+    {
+        "motorId": "4684a3c0-c05d-48cd-b9e0-e6a6a1c4484d",
+        "propeller": "HQ 3520-3",
+        "throttle": 50,
+        "thrust": 177.27,
+        "voltage": 16.82,
+        "current": 2.94,
+        "rpm": 18867,
+        "power": 49.45,
+        "efficiency": 3.58
+    },
+    {
+        "motorId": "4684a3c0-c05d-48cd-b9e0-e6a6a1c4484d",
+        "propeller": "HQ 3520-3",
+        "throttle": 100,
+        "thrust": 530.92,
+        "voltage": 16.71,
+        "current": 12.45,
+        "rpm": 31362,
+        "power": 208.04,
+        "efficiency": 2.55
+    }
+]

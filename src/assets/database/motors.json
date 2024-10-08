@@ -1,0 +1,12 @@
+[
+    {
+        "id": "4684a3c0-c05d-48cd-b9e0-e6a6a1c4484d",
+        "title": "T_Motor F1408-Ⅱ",
+        "declaredWeight": 14.9,
+        "size": 1408,
+        "mounting": "Φ12 4xM2",
+        "propMount": ["2mm", "tmount"],
+        "kv": 2800,
+        "measuredWeight": null
+    }
+]

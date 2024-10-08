@@ -1,0 +1,18 @@
+[
+    {
+        "title": "SpeedyBee F405 Mini BLS 35A Stack",
+        "declaredWeight": 13.5,
+        "mounting": [20],
+        "size": "L32*W35*H14.2",
+        "powerSupply": [3, 4, 5, 6],
+        "measuredWeight": null
+    },
+    {
+        "title": "Walksnail Avatar HD Mini VTX V3",
+        "declaredWeight": 13.4,
+        "mounting": [20, 25.5],
+        "size": "L31.5*W31.5*H9.4",
+        "powerSupply": [1, 2, 3],
+        "measuredWeight": null
+    }
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "title": "AOS 3.5 V5",
+        "declaredSize": "L133*W93*H30",
+        "declaredWeight": 68,
+        "propSizeCompatibility": [3, 3.5, 4],
+        "stackSizeCompatibility": [20, 20, 25.5, 25.5],
+        "motorMountingCompatibility": [9, 23],
+        "measuredWeight": null
+    }
+]
