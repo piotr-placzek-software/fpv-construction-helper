@@ -1,0 +1,17 @@
+<div class="p-2 flex flex-col gap-2">
+    <mat-card>
+        <mat-card-header class="flex justify-between mb-4">
+            <mat-card-title>Parts database</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-tab-group (selectedTabChange)="tabChanged($event)" class="mb-4">
+                <mat-tab *ngFor="let label of tabsLabels" label="{{label | titlecase }}"></mat-tab>
+            </mat-tab-group>
+            <app-data-table
+                [columnsConfig]="columnsConfig"
+                [dataSource]="dataSource"
+                [pagination]="pagination"
+                (pageChange)="pageChanged($event)"></app-data-table>
+        </mat-card-content>
+    </mat-card>
+</div>

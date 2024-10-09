@@ -1,5 +1,17 @@
 import { ObjectValues } from '../../shared/types/ts-specific.types';
 
+export type QueryOptions<T> = {
+    where?: Partial<T>;
+    pagination?: {
+        pageIndex: number;
+        pageSize: number;
+    };
+    order?: {
+        orderBy: string;
+        orderDirection: 'asc' | 'desc';
+    };
+};
+
 export const PART_CATEGORY = {
     FRAME: 'frame',
     PROPELLER: 'propeller',
@@ -31,7 +43,7 @@ export class FrameDescriptionEntity implements PartDescriptionEntity<typeof PART
         public readonly declaredSize: string,
         public readonly declaredWeight: number,
         public readonly propSizeCompatibility: number[],
-        public readonly stackSizeCompatibility: unknown[],
+        public readonly stackSizeCompatibility: number[],
         public readonly motorMountingCompatibility: number[],
         public readonly measuredWeight?: number | null,
     ) {}
