@@ -12,15 +12,15 @@ import { AppCoreModule } from './core-modules/app-core.module';
 import { AppNavigationItem } from './core-modules/navigation/app-navigation.item';
 import { AppNavigationService } from './core-modules/navigation/app-navigation.service';
 import { AppCalculatorsModule } from './features-modules/calculators/app-calulators.module';
+import { AppPartsDatabaseModule } from './features-modules/parts-database/app-parts-database.module';
 import { AppRatesChartsModule } from './features-modules/rates-charts/app-rates-charts.module';
 import { AppLayoutComponent } from './layout/app-layout.component';
 import { AppSideNavComponent } from './layout/side-nav/app-side-nav.component';
 import { AppToolbarComponent } from './layout/toolbar/app-toolbar.component';
 import { AppHomePageComponent } from './pages/home-page/app-home-page.component';
 import { AppUnderConstructionPageComponent } from './pages/under-construction/app-under-construction-page.component';
-import { AppDataTableModule } from './shared/modules/data-table/app-data-table.module';
 
-const AppFeatureModules = [AppCalculatorsModule, AppRatesChartsModule];
+const AppFeatureModules = [AppCalculatorsModule, AppRatesChartsModule, AppPartsDatabaseModule];
 const MatModules = [MatToolbarModule, MatSidenavModule, MatCheckboxModule, MatIconModule, MatProgressBarModule];
 const AppLayoutComponents = [AppLayoutComponent, AppToolbarComponent, AppSideNavComponent];
 @NgModule({
@@ -32,7 +32,6 @@ const AppLayoutComponents = [AppLayoutComponent, AppToolbarComponent, AppSideNav
         ...MatModules,
         AppCoreModule,
         ...AppFeatureModules,
-        AppDataTableModule,
     ],
     bootstrap: [AppComponent],
 })
@@ -43,13 +42,6 @@ export class AppModule {
                 path: '',
                 component: AppHomePageComponent,
             }),
-            new AppNavigationItem(
-                10,
-                'Parts database',
-                'format_list_bulleted',
-                { path: 'parts', component: AppUnderConstructionPageComponent },
-                true,
-            ),
             new AppNavigationItem(
                 11,
                 'Shopping list',
